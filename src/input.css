@@ -43,6 +43,15 @@
     @apply outline-2 outline-primary outline-offset-[3px] rounded-[3px];
   }
 
+  .terminal-dark {
+    --color-bg: #0b0d10;
+    --color-surface: #14181d;
+    --color-border: #262b31;
+    --color-ink: #e7e5df;
+    --color-muted: #838d97;
+    color-scheme: dark;
+  }
+
   .icon-github {
     background-color: #000000 !important;
   }
