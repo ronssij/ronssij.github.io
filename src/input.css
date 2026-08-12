@@ -84,6 +84,26 @@
     transform: translateX(-50%) rotate(45deg);
   }
 
+  .corner-mark {
+    @apply absolute w-2.5 h-2.5 border-border;
+  }
+
+  .corner-mark--tl {
+    @apply top-0 left-0 border-t border-l -translate-x-1 -translate-y-1;
+  }
+
+  .corner-mark--tr {
+    @apply top-0 right-0 border-t border-r translate-x-1 -translate-y-1;
+  }
+
+  .corner-mark--bl {
+    @apply bottom-0 left-0 border-b border-l -translate-x-1 translate-y-1;
+  }
+
+  .corner-mark--br {
+    @apply bottom-0 right-0 border-b border-r translate-x-1 translate-y-1;
+  }
+
   .diff {
     @apply mt-6 border-t border-b border-border;
   }
