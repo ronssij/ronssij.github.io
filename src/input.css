@@ -228,30 +228,13 @@
     @apply inline-block w-2 h-4 bg-amber align-text-bottom animate-[blink_0.85s_step-end_infinite];
   }
 
-  .typewriter {
-    @apply inline-block overflow-hidden whitespace-nowrap border-r-2 border-amber;
-    animation:
-      typing 1.1s steps(18, end) 0.2s 1 both,
-      blink 0.85s step-end infinite;
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .typewriter {
-      animation: none;
-      border-right: none;
-    }
-
     .cursor {
       animation: none;
     }
   }
 }
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 18ch; }
-}
-
 @keyframes blink {
-  50% { border-color: transparent; }
+  50% { opacity: 0; }
 }
