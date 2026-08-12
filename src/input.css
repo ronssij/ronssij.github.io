@@ -43,6 +43,14 @@
     @apply outline-2 outline-primary outline-offset-[3px] rounded-[3px];
   }
 
+  :root:not([data-theme="light"]) .icon-github {
+    background-color: #000000 !important;
+  }
+
+  :root:not([data-theme="light"]) .icon-github svg {
+    color: #ffffff;
+  }
+
   .theme-icon-moon {
     display: none;
   }
