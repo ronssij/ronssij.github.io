@@ -13,6 +13,21 @@
 </head>
 <body>
 
+<nav class="sticky top-0 z-50 border-b border-border bg-bg" aria-label="Primary">
+  <div class="max-w-[1180px] mx-auto flex items-stretch">
+    <a href="#" class="flex items-center px-6 py-3 text-sm font-semibold text-ink shrink-0">cjronxel</a>
+    <div class="relative hidden sm:flex items-stretch border-l border-border">
+      <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
+      <a href="#about-heading" class="flex items-center border-r border-border px-5 py-3 text-xs uppercase tracking-widest text-muted transition-colors duration-150 hover:text-amber">About</a>
+      <a href="#experience-heading" class="flex items-center border-r border-border px-5 py-3 text-xs uppercase tracking-widest text-muted transition-colors duration-150 hover:text-amber">Experience</a>
+      <a href="#projects-heading" class="flex items-center border-r border-border px-5 py-3 text-xs uppercase tracking-widest text-muted transition-colors duration-150 hover:text-amber">Work</a>
+      <a href="#stack-heading" class="flex items-center border-r border-border px-5 py-3 text-xs uppercase tracking-widest text-muted transition-colors duration-150 hover:text-amber">Stack</a>
+      <a href="#site-footer" class="flex items-center px-5 py-3 text-xs uppercase tracking-widest text-muted transition-colors duration-150 hover:text-amber">Contact</a>
+    </div>
+    <div id="nav-clock" class="ml-auto flex items-center border-l border-border px-5 py-3 text-xs uppercase tracking-widest text-muted shrink-0">Davao, PH --:--:--</div>
+  </div>
+</nav>
+
 <div class="max-w-[1180px] mx-auto px-6 pt-16 pb-24 sm:px-4 sm:pt-10 sm:pb-16 border-x border-border">
 
   <header class="relative pb-24 border-b border-border min-h-screen flex flex-col justify-center">
@@ -65,7 +80,7 @@
     <section class="relative py-24 border-b border-border min-h-screen flex flex-col justify-center" aria-labelledby="about-heading">
       <span class="section-marker" aria-hidden="true"></span>
       <p class="eyebrow">// about</p>
-      <h2 id="about-heading" class="section__heading">whoami</h2>
+      <h2 id="about-heading" class="section__heading scroll-mt-20">whoami</h2>
 
       <div class="mt-6 grid gap-8 sm:grid-cols-[1fr_14rem] sm:items-start">
         <div>
@@ -104,7 +119,7 @@
     <section class="relative py-24 border-b border-border min-h-screen flex flex-col justify-center" aria-labelledby="stack-heading">
       <span class="section-marker" aria-hidden="true"></span>
       <p class="eyebrow">// stack</p>
-      <h2 id="stack-heading" class="section__heading">installed</h2>
+      <h2 id="stack-heading" class="section__heading scroll-mt-20">installed</h2>
 
       <div class="mt-6">
         <div class="stack-group">
@@ -145,7 +160,7 @@
     <section class="relative py-24 border-b border-border min-h-screen flex flex-col justify-center" aria-labelledby="experience-heading">
       <span class="section-marker" aria-hidden="true"></span>
       <p class="eyebrow">// experience</p>
-      <h2 id="experience-heading" class="section__heading">log</h2>
+      <h2 id="experience-heading" class="section__heading scroll-mt-20">log</h2>
 
       <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#e0a458]/10">
@@ -312,7 +327,7 @@
     <section class="relative py-24 border-b border-border min-h-screen flex flex-col justify-center" aria-labelledby="projects-heading">
       <span class="section-marker" aria-hidden="true"></span>
       <p class="eyebrow">// projects</p>
-      <h2 id="projects-heading" class="section__heading">
+      <h2 id="projects-heading" class="section__heading scroll-mt-20">
         shipped
         <span class="tag tag--green">status: published</span>
       </h2>
@@ -400,7 +415,7 @@
 
   </main>
 
-  <footer class="pt-16">
+  <footer id="site-footer" class="pt-16 scroll-mt-6">
     <p class="prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> <span class="cursor" aria-hidden="true"></span></p>
     <nav class="mt-4 flex flex-wrap gap-y-2 gap-x-6" aria-label="Contact">
       <a class="opt text-[#8b94a0] [--icon-color:#8b94a0]" href="https://github.com/ronssij" target="_blank" rel="noopener">
@@ -423,6 +438,25 @@
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var el = document.getElementById('nav-clock');
+    if (!el) return;
+    var fmt = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Manila',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    });
+    function tick() {
+      el.textContent = 'Davao, PH ' + fmt.format(new Date());
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
 
 </body>
 </html>
