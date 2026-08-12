@@ -107,7 +107,7 @@
 
   .section-marker {
     @apply absolute left-1/2 bg-bg border border-border;
-    bottom: -0.5rem;
+    bottom: -0.40rem;
     width: 0.7rem;
     height: 0.7rem;
     transform: translateX(-50%) rotate(45deg);
