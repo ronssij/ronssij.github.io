@@ -339,25 +339,39 @@
   </main>
 
   <footer id="site-footer" class="pt-16 scroll-mt-6">
-    <p class="prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> <span class="cursor" aria-hidden="true"></span></p>
-    <nav class="mt-4 flex flex-wrap gap-y-2 gap-x-6" aria-label="Contact">
-      <a class="opt text-[#8b94a0] [--icon-color:#8b94a0]" href="https://github.com/ronssij" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-        --github
-      </a>
-      <a class="opt text-[#0A66C2] [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg>
-        --linkedin
-      </a>
-      <a class="opt text-[#EA4AAA] [--icon-color:#EA4AAA]" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
-        --sponsor
-      </a>
-      <a class="opt text-[#EA4335] [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-        --email
-      </a>
-    </nav>
+    <div class="max-w-lg rounded-lg border border-border bg-surface overflow-hidden">
+      <div class="flex items-center gap-1.5 border-b border-border bg-bg px-4 py-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" aria-hidden="true"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" aria-hidden="true"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]" aria-hidden="true"></span>
+        <span class="ml-2 text-xs text-muted">contact.sh</span>
+      </div>
+
+      <div class="p-5">
+        <p class="prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> whoami</p>
+
+        <nav class="mt-4 flex flex-col gap-2" aria-label="Contact">
+          <a class="opt text-[#8b94a0] [--icon-color:#8b94a0]" href="https://github.com/ronssij" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
+            --github
+          </a>
+          <a class="opt text-[#0A66C2] [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg>
+            --linkedin
+          </a>
+          <a class="opt text-[#EA4AAA] [--icon-color:#EA4AAA]" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+            --sponsor
+          </a>
+          <a class="opt text-[#EA4335] [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+            --email
+          </a>
+        </nav>
+
+        <p class="mt-4 prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> <span class="cursor" aria-hidden="true"></span></p>
+      </div>
+    </div>
   </footer>
 
 </div>
