@@ -43,6 +43,10 @@
     @apply outline-2 outline-primary outline-offset-[3px] rounded-[3px];
   }
 
+  :root:not([data-theme="light"]) .card-overlay {
+    background-color: #4b4f58;
+  }
+
   .terminal-dark {
     --color-bg: #0b0d10;
     --color-surface: #14181d;
