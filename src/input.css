@@ -8,6 +8,7 @@
   --color-ink: #e7e5df;
   --color-muted: #838d97;
   --color-amber: #e0a458;
+  --color-primary: #e0a458;
   --color-green: #6fae82;
 
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -24,7 +25,7 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-amber outline-offset-[3px] rounded-[3px];
+    @apply outline-2 outline-primary outline-offset-[3px] rounded-[3px];
   }
 }
 
