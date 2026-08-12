@@ -159,7 +159,7 @@
           <p class="font-semibold text-[#d98cc0]">Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#d98cc0]">Alpine Internet Solutions</span> <span class="text-muted">· May 2019 – Feb 2020</span></p>
         </div>
-        <div class="experience-card-extra hidden group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#5fb8b0]/10">
+        <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#5fb8b0]/10">
           <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--tr" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--bl" aria-hidden="true"></span>
@@ -167,7 +167,7 @@
           <p class="font-semibold text-[#5fb8b0]">Full Stack Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#5fb8b0]">Peoplewave</span> <span class="text-muted">· Feb 2018 – Apr 2019</span></p>
         </div>
-        <div class="experience-card-extra hidden group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#a48ce0]/10">
+        <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#a48ce0]/10">
           <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--tr" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--bl" aria-hidden="true"></span>
@@ -175,7 +175,7 @@
           <p class="font-semibold text-[#a48ce0]">Full Stack Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#a48ce0]">21POS</span> <span class="text-muted">· Nov 2016 – Nov 2017</span></p>
         </div>
-        <div class="experience-card-extra hidden group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#d9776f]/10">
+        <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#d9776f]/10">
           <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--tr" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--bl" aria-hidden="true"></span>
@@ -183,27 +183,31 @@
           <p class="font-semibold text-[#d9776f]">Full Stack Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#d9776f]">JBTech Marketing</span> <span class="text-muted">· Jul 2016 – Nov 2016</span></p>
         </div>
-        <div class="experience-card-extra hidden group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#6fc4d9]/10">
+      </div>
+
+      <div class="mt-10 flex items-center gap-4">
+        <span class="text-xs uppercase tracking-widest text-muted shrink-0">Project-based</span>
+        <span class="h-px flex-1 bg-border"></span>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#6fc4d9]/10">
           <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--tr" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--bl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--br" aria-hidden="true"></span>
           <p class="font-semibold text-[#6fc4d9]">Full Stack Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#6fc4d9]">Bureau of Customs</span> <span class="text-muted">· Sept 2017 – Mar 2026</span></p>
-          <span class="tag mt-1">project-based</span>
         </div>
-        <div class="experience-card-extra hidden group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#d9c96f]/10">
+        <div class="group relative border border-border rounded-md p-6 flex flex-col items-center gap-2 text-center transition-colors duration-200 hover:bg-[#d9c96f]/10">
           <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--tr" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--bl" aria-hidden="true"></span>
           <span class="corner-mark corner-mark--br" aria-hidden="true"></span>
           <p class="font-semibold text-[#d9c96f]">Full Stack Web Developer</p>
           <p class="text-sm"><span class="font-medium text-[#d9c96f]">HYVHR</span> <span class="text-muted">· Sept 2017 – Mar 2026</span></p>
-          <span class="tag mt-1">project-based</span>
         </div>
       </div>
-
-      <button id="experience-toggle" type="button" aria-expanded="false" class="mt-6 self-start text-sm font-semibold text-primary hover:underline">View more</button>
     </section>
 
     <section id="projects-heading" class="relative scroll-mt-16 -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border min-h-[calc(100vh-4rem)] flex flex-col justify-center" aria-labelledby="projects-heading-title">
@@ -394,22 +398,6 @@
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light');
       }
-    });
-  })();
-</script>
-
-<script>
-  (function () {
-    var btn = document.getElementById('experience-toggle');
-    if (!btn) return;
-    var extras = document.querySelectorAll('.experience-card-extra');
-    btn.addEventListener('click', function () {
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      extras.forEach(function (el) {
-        el.classList.toggle('hidden', expanded);
-      });
-      btn.setAttribute('aria-expanded', String(!expanded));
-      btn.textContent = expanded ? 'View more' : 'Show less';
     });
   })();
 </script>
