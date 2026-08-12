@@ -76,6 +76,14 @@
     @apply inline-block w-9 h-9 rotate-45 rounded-md border-2;
   }
 
+  .section-marker {
+    @apply absolute left-1/2 bg-bg border border-border;
+    bottom: -0.5rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    transform: translateX(-50%) rotate(45deg);
+  }
+
   .diff {
     @apply mt-6 border-t border-b border-border;
   }
