@@ -9,8 +9,24 @@
 <script>
   (function () {
     var stored = localStorage.getItem('theme');
-    var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    if (stored) {
+      if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      return;
+    }
+    document.documentElement.setAttribute('data-theme', 'light');
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      window.addEventListener('load', function () {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            document.documentElement.classList.add('theme-fade');
+            document.documentElement.removeAttribute('data-theme');
+            setTimeout(function () {
+              document.documentElement.classList.remove('theme-fade');
+            }, 700);
+          });
+        });
+      });
+    }
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
