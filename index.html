@@ -19,6 +19,7 @@
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
             document.documentElement.classList.add('theme-fade');
+            document.documentElement.offsetHeight;
             document.documentElement.removeAttribute('data-theme');
             setTimeout(function () {
               document.documentElement.classList.remove('theme-fade');
