@@ -64,6 +64,14 @@
     color: #ffffff;
   }
 
+  :root:not([data-theme="light"]) .icon-github {
+    background-color: #ffffff !important;
+  }
+
+  :root:not([data-theme="light"]) .icon-github svg {
+    color: #000000;
+  }
+
   .theme-icon-moon {
     display: none;
   }
