@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — CJ Ronxel Cabug-os</title>
-<meta name="description" content="Projects and products built by CJ Ronxel Cabug-os — Senior Laravel Engineer, Tech Lead & Technical Architect.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230b0d10'/%3E%3Ctext x='12' y='17' font-family='monospace' font-size='14' fill='%23e0a458' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+<title>Projects · CJ Ronxel Cabug-os</title>
+<meta name="description" content="Every product CJ Ronxel Cabug-os has shipped, from MVPs to App Store apps.">
+<meta name="theme-color" content="#1a3636">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a3636'/%3E%3Cpath d='M4 25 13 10l4 7 4-5 7 13Z' fill='%23d6bd98'/%3E%3C/svg%3E">
 <script>
   (function () {
-    var stored = localStorage.getItem('theme');
+    var root = document.documentElement;
+    root.classList.add('js');
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
     if (stored) {
-      if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (stored === 'light') root.setAttribute('data-theme', 'light');
       return;
     }
-    document.documentElement.setAttribute('data-theme', 'light');
+    root.setAttribute('data-theme', 'light');
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       window.addEventListener('load', function () {
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
-            document.documentElement.classList.add('theme-fade');
-            document.documentElement.offsetHeight;
-            document.documentElement.removeAttribute('data-theme');
-            setTimeout(function () {
-              document.documentElement.classList.remove('theme-fade');
-            }, 700);
+            root.classList.add('theme-fade');
+            root.offsetHeight;
+            root.removeAttribute('data-theme');
+            setTimeout(function () { root.classList.remove('theme-fade'); }, 700);
           });
         });
       });
@@ -32,408 +34,132 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
 </head>
 <body>
-
-<nav class="sticky top-0 z-50" aria-label="Primary">
-  <div class="h-16 max-w-[1180px] mx-auto flex items-stretch border-x border-b border-border bg-bg">
-    <div class="w-16 flex items-center justify-center border-r border-border shrink-0">
-      <svg viewBox="0 0 48 56" class="w-6 h-7 text-ink" fill="none" aria-hidden="true">
-        <path fill="currentColor" d="M24 4 44 15v9H28v8h16v9L24 52 4 41V15z"/>
-        <path fill="currentColor" fill-opacity="0.55" d="M24 4 44 15 24 26 4 15z"/>
-      </svg>
-    </div>
-    <a href="/" class="flex items-center border-r border-border px-5 py-3 text-sm font-semibold text-ink shrink-0">cjronxel</a>
-    <div class="relative hidden sm:flex flex-1 items-center justify-center gap-6 px-5 py-3 text-xs uppercase tracking-widest text-muted">
-      <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
-      <a href="/#about-heading" class="transition-colors duration-150 hover:text-primary">About</a>
-      <a href="/#experience-heading" class="transition-colors duration-150 hover:text-primary">Experience</a>
-      <a href="/#stack-heading" class="transition-colors duration-150 hover:text-primary">Stack</a>
-      <a href="/#projects-heading" class="transition-colors duration-150 hover:text-primary">Work</a>
-      <a href="/#site-footer" class="transition-colors duration-150 hover:text-primary">Contact</a>
-    </div>
-    <div id="nav-clock" class="ml-auto flex items-center border-l border-border px-5 py-3 text-xs uppercase tracking-widest text-muted shrink-0">Davao, PH --:--:--</div>
-    <button id="theme-toggle" type="button" aria-label="Toggle color theme" class="w-14 flex items-center justify-center border-l border-border text-muted transition-colors duration-150 hover:text-primary shrink-0">
-      <svg class="theme-icon-sun w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2.5 12h2M19.5 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="theme-icon-moon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 14.45a8.5 8.5 0 0 1-10.8-10.8 8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-pop focus:px-4 focus:py-2 focus:text-on-pop">Skip to content</a>
+<header class="nav" id="nav">
+  <nav class="nav__bar" aria-label="Primary">
+    <a href="/" class="nav__brand"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M2 26 12 9l5 8 4-5 9 14Z" fill="currentColor"/><path d="M10.2 12.2 12 9l1.8 3-1.8 1.3Z" fill="var(--color-bg)"/><circle cx="24" cy="7" r="2.5" fill="currentColor"/></svg><span>cjronxel</span></a>
+    <div class="nav__links"><a href="/#work">Work</a><a href="/#process">Process</a><a href="/#about">About</a><a href="/#experience">Experience</a><a href="/#kit">Kit</a><a href="/#contact">Contact</a></div>
+    <span class="avail ml-auto lg:ml-0"><span class="avail__dot" aria-hidden="true"></span><span class="hidden sm:inline">Available</span><span class="sm:hidden">Open</span></span>
+    <span class="nav__clock"><span>DVO</span> <span id="nav-clock">--:--:--</span></span>
+    <button id="theme-toggle" type="button" class="icon-btn" aria-label="Toggle color theme">
+      <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2.5 12h2M19.5 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 14.45a8.5 8.5 0 0 1-10.8-10.8 8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
     </button>
+  </nav>
+</header>
+<aside class="gauge" aria-hidden="true">
+  <span class="gauge__km" id="gauge-km">KM 0.0</span>
+  <div class="gauge__track"><div class="gauge__ticks"><i></i><i></i><i></i><i></i><i></i></div><div class="gauge__fill"></div><div class="gauge__dot"></div></div>
+  <span class="gauge__label" id="gauge-label">Start</span>
+</aside><main id="main"><section class="hero results-hero" id="top" data-gauge="Start">
+  <svg class="topo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="topo__drift"><g data-depth="18"><path class="contour" pathLength="1" style="--i:1" d="M974 260C975 262 973 264 971 266C970 268 969 269 968 271C967 273 966 275 964 276C963 278 960 279 958 280C956 280 953 281 950 281C948 282 946 283 944 283C942 284 939 285 937 285C935 284 932 283 930 282C928 282 926 280 924 280C922 280 920 282 917 282C914 283 909 285 906 285C902 286 899 285 896 284C894 282 893 280 892 278C892 276 891 273 891 271C892 269 892 267 893 265C893 263 896 262 897 260C898 258 900 257 900 256C901 254 899 253 899 251C899 249 898 247 898 245C899 244 901 242 903 241C905 240 908 240 910 239C912 238 914 237 915 235C917 234 919 231 921 230C924 229 927 228 930 228C933 228 936 229 938 231C941 232 943 233 945 234C947 236 949 237 950 239C951 241 951 243 951 245C952 247 951 248 953 249C954 250 957 250 960 251C963 252 968 253 970 254C973 256 974 258 974 260Z"/><path class="contour" pathLength="1" style="--i:2" d="M1019 260C1019 264 1015 268 1013 272C1011 275 1008 279 1006 282C1003 285 1002 289 999 292C995 295 991 297 986 299C981 301 976 302 971 303C966 304 962 306 958 307C953 308 949 310 944 309C939 309 934 306 930 305C926 304 923 301 918 301C914 301 910 303 903 305C897 307 888 310 882 311C875 311 867 310 863 307C858 304 856 299 855 295C853 291 853 286 853 282C853 278 853 274 855 270C857 267 861 263 864 260C866 257 870 255 871 252C871 249 869 246 868 242C868 239 865 234 867 230C868 227 872 224 876 222C880 220 886 220 890 218C894 216 897 214 901 211C905 208 908 203 913 200C918 198 924 196 930 196C936 196 942 199 947 201C952 203 957 206 960 209C964 212 968 215 970 218C972 222 972 227 973 230C974 234 973 237 976 239C978 241 985 241 990 242C996 244 1006 246 1011 249C1016 252 1019 256 1019 260Z"/><path class="contour" pathLength="1" style="--i:3" d="M1063 260C1064 266 1058 272 1054 277C1051 283 1047 288 1044 293C1040 298 1038 304 1033 308C1028 313 1021 316 1014 319C1007 321 998 322 991 324C984 326 978 329 972 330C965 332 958 334 951 334C944 333 936 330 930 327C924 325 919 321 913 321C906 321 899 325 890 327C881 330 868 336 857 336C847 337 836 334 829 331C823 327 820 319 817 313C815 307 814 300 814 293C815 287 815 281 818 276C820 270 827 265 830 260C834 255 840 252 841 248C842 243 838 239 838 233C837 228 833 221 835 216C837 211 843 207 849 204C855 201 864 200 870 197C876 195 881 191 886 186C892 182 897 174 904 170C912 167 922 164 930 164C938 165 948 168 955 172C963 175 970 179 976 183C981 187 987 192 990 197C993 203 992 210 994 215C995 220 994 225 998 228C1003 231 1012 231 1021 234C1030 236 1044 239 1051 243C1059 247 1063 254 1063 260Z"/><path class="contour" pathLength="1" style="--i:4" d="M1108 260C1108 268 1100 276 1096 283C1091 290 1086 297 1082 304C1077 311 1074 319 1068 324C1061 330 1051 335 1042 338C1033 342 1021 343 1012 346C1002 348 994 352 986 354C977 356 967 359 958 358C949 358 939 353 930 350C921 347 916 341 907 341C898 341 889 346 877 350C865 353 847 361 833 361C820 362 805 359 796 354C787 349 783 339 780 330C776 322 776 313 776 305C776 296 777 288 780 281C784 273 792 266 797 260C802 254 809 249 811 243C813 237 808 231 807 224C805 217 801 207 803 201C806 194 815 189 822 185C830 181 842 181 850 177C859 173 864 167 872 161C879 155 886 145 896 140C906 135 919 132 930 133C941 133 953 138 963 142C974 146 983 152 991 157C998 163 1006 169 1010 177C1014 184 1013 194 1015 200C1017 207 1015 213 1021 217C1027 222 1039 222 1051 225C1063 228 1083 232 1092 237C1101 243 1107 252 1108 260Z"/><path class="contour" pathLength="1" style="--i:5" d="M1152 260C1153 270 1143 280 1137 289C1132 298 1125 306 1119 315C1114 324 1110 333 1102 340C1094 348 1082 354 1070 358C1058 362 1044 364 1032 367C1020 370 1011 375 999 377C988 380 977 384 965 383C953 382 941 376 930 372C919 369 912 362 901 362C890 362 879 368 864 372C848 376 826 386 809 387C792 388 773 384 762 378C751 371 746 358 742 348C738 338 737 326 737 316C738 306 739 295 743 286C747 277 758 268 764 260C770 252 779 247 781 239C783 232 777 224 776 215C774 206 768 194 772 186C775 178 786 171 796 166C805 161 820 161 831 156C841 151 848 144 857 137C867 129 875 116 887 110C900 104 916 100 930 101C944 101 959 107 972 113C985 118 996 124 1006 132C1016 139 1025 147 1030 156C1035 165 1034 177 1036 185C1039 194 1036 202 1044 207C1051 212 1066 212 1081 216C1096 220 1121 225 1132 232C1144 239 1151 250 1152 260Z"/><path class="contour" pathLength="1" style="--i:6" d="M1196 260C1197 271 1185 284 1179 295C1172 306 1164 316 1157 326C1150 336 1146 348 1136 357C1126 365 1112 372 1098 378C1084 383 1067 385 1053 388C1038 392 1027 398 1013 401C1000 404 986 409 972 408C958 407 943 399 930 395C917 391 909 382 895 382C882 382 869 389 850 395C832 400 805 411 785 412C764 413 742 409 728 401C715 393 709 378 705 365C700 353 699 339 699 327C699 315 700 302 706 291C711 280 723 269 731 260C738 251 749 244 752 235C754 226 747 217 745 206C743 196 736 181 740 171C744 161 757 153 769 147C780 141 798 141 811 135C823 129 831 121 843 112C854 103 864 88 879 80C894 73 913 68 930 69C947 69 965 77 980 83C995 89 1010 97 1021 106C1033 115 1043 124 1050 135C1056 146 1055 160 1058 171C1061 181 1058 190 1067 196C1075 202 1094 202 1111 207C1129 212 1159 217 1173 226C1187 235 1196 249 1196 260Z"/><path class="contour" pathLength="1" style="--i:7" d="M1241 260C1242 273 1228 288 1220 300C1212 313 1203 325 1195 337C1187 349 1182 363 1171 373C1159 383 1142 391 1126 397C1110 403 1089 405 1073 410C1057 414 1043 420 1027 424C1011 428 995 433 979 432C963 431 945 422 930 417C915 412 905 402 890 402C874 402 859 411 837 417C816 423 784 436 760 438C737 439 710 434 695 425C679 416 673 397 667 383C661 369 660 353 660 338C661 324 662 309 668 296C674 283 689 271 698 260C706 249 719 241 722 231C725 221 716 210 714 197C712 185 704 168 708 156C713 145 728 135 742 128C755 121 776 121 791 114C805 107 815 98 828 87C841 77 853 59 870 50C887 42 910 36 930 37C950 38 971 46 989 54C1006 61 1023 70 1036 80C1050 90 1062 101 1069 114C1077 127 1076 144 1079 156C1082 168 1079 178 1089 185C1100 193 1121 193 1141 199C1162 205 1197 210 1213 221C1230 231 1240 247 1241 260Z"/><path class="contour" pathLength="1" style="--i:8" d="M1285 260C1287 275 1270 292 1261 306C1253 321 1242 334 1233 348C1224 362 1218 377 1205 389C1192 400 1173 410 1154 417C1135 424 1112 426 1093 431C1075 436 1059 443 1041 448C1023 452 1004 458 986 457C967 455 947 445 930 440C913 434 901 423 884 423C866 423 848 433 824 439C799 446 763 461 736 463C709 464 679 459 661 448C643 438 636 417 629 401C623 384 622 366 622 349C622 333 624 317 631 302C638 287 654 272 664 260C675 248 689 239 692 227C695 215 686 203 683 188C681 174 671 155 677 142C682 128 699 117 715 109C731 101 754 101 771 93C787 86 798 75 813 63C829 51 842 30 862 20C881 11 907 4 930 5C953 6 977 16 997 24C1017 32 1036 43 1052 55C1067 66 1081 79 1089 93C1097 107 1097 127 1100 141C1104 154 1100 167 1112 175C1124 183 1148 183 1172 190C1195 197 1235 203 1254 215C1273 227 1284 245 1285 260Z"/><path class="contour" pathLength="1" style="--i:9" d="M1330 260C1331 277 1313 295 1303 312C1293 328 1282 343 1271 359C1260 374 1254 392 1239 405C1225 418 1203 428 1182 436C1161 444 1135 447 1114 453C1093 458 1075 466 1055 471C1035 476 1014 483 993 481C972 480 949 469 930 462C911 456 898 443 878 443C858 443 838 454 811 462C783 469 743 487 712 488C682 490 648 483 628 472C608 460 599 437 592 418C584 400 583 379 583 360C584 342 585 324 593 307C601 290 620 274 631 260C643 246 659 236 662 223C666 209 655 196 653 180C650 164 639 142 645 127C651 112 670 100 688 91C706 82 733 81 751 72C769 64 782 52 799 38C816 25 832 1 853 -9C875 -20 905 -27 930 -27C955 -26 983 -15 1005 -5C1028 4 1049 16 1067 29C1084 42 1100 56 1109 72C1118 88 1117 111 1122 126C1126 141 1121 155 1135 164C1148 173 1175 174 1202 181C1229 189 1273 196 1294 209C1316 222 1328 243 1330 260Z"/></g><g data-depth="36"><path class="contour" pathLength="1" style="--i:10" d="M225 640C226 642 225 646 223 648C221 650 215 651 212 653C209 654 205 655 203 656C200 657 198 658 196 659C194 660 192 661 190 662C189 664 187 665 185 667C183 669 182 672 179 675C177 677 173 680 170 681C167 682 162 681 159 679C156 678 154 675 151 673C149 671 147 669 144 668C142 666 139 666 136 664C134 663 133 661 132 659C131 657 131 654 131 652C131 650 131 648 130 646C130 644 129 642 129 640C129 638 130 636 130 634C130 632 131 631 131 628C130 626 128 622 128 619C127 616 126 612 128 610C130 607 134 606 138 605C142 605 148 607 151 607C155 608 159 610 162 610C165 611 167 611 170 611C173 611 175 612 178 612C180 612 182 613 185 613C188 614 191 613 195 613C198 613 202 614 205 615C207 616 209 618 210 620C212 623 211 625 213 627C214 629 217 631 219 633C221 635 225 638 225 640Z"/><path class="contour" pathLength="1" style="--i:11" d="M281 640C282 645 280 651 276 655C271 659 261 663 254 665C248 668 241 670 235 672C230 674 227 676 223 678C219 680 215 682 211 685C207 687 204 689 201 694C197 698 194 705 189 709C184 714 177 721 170 722C163 724 155 722 148 719C142 716 138 709 133 705C128 702 124 698 119 696C114 693 107 692 103 689C99 686 95 682 93 677C92 673 93 668 92 663C92 659 92 655 91 651C90 648 88 644 88 640C88 636 90 632 90 628C91 624 92 621 91 616C90 611 86 605 85 599C84 593 83 584 86 579C90 574 98 571 106 570C114 570 125 573 133 575C141 577 148 579 154 581C160 582 165 581 170 582C175 583 180 583 185 584C190 585 195 586 200 587C206 587 213 586 219 586C226 587 234 587 239 590C245 592 248 597 250 601C253 605 253 610 256 614C258 618 264 622 268 626C272 630 280 635 281 640Z"/><path class="contour" pathLength="1" style="--i:12" d="M336 640C338 647 335 657 328 663C322 669 306 674 296 678C286 682 276 684 268 688C260 691 255 694 249 698C243 701 237 703 231 707C226 711 221 714 216 720C210 727 206 737 198 744C191 751 180 761 170 763C160 766 147 763 138 758C128 754 122 744 114 738C107 732 101 728 93 724C86 719 76 718 69 713C63 709 58 702 55 696C52 690 54 682 54 675C53 669 52 663 51 657C50 651 47 646 47 640C47 634 49 629 50 623C51 617 53 612 52 604C50 597 44 587 43 578C42 569 39 556 44 549C50 541 62 537 74 535C86 534 103 540 114 542C126 545 136 549 146 551C155 553 162 552 170 553C178 554 185 555 193 556C200 557 207 560 215 560C224 561 234 559 244 560C254 560 266 561 274 564C282 568 287 575 291 581C295 588 294 595 298 601C303 608 311 612 317 619C323 625 334 633 336 640Z"/><path class="contour" pathLength="1" style="--i:13" d="M392 640C394 650 390 662 381 671C372 679 352 685 339 691C325 696 311 699 301 703C290 708 284 712 275 717C267 721 259 724 252 729C245 734 238 739 231 747C224 756 218 769 208 779C198 788 184 801 170 805C156 808 139 804 127 798C114 792 105 779 95 771C86 763 78 757 68 751C58 746 44 744 36 738C27 732 20 723 17 715C13 706 16 695 15 687C14 678 13 671 12 663C10 655 6 648 6 640C6 632 9 625 10 617C11 609 14 602 12 592C11 583 2 570 0 558C-1 545 -4 528 2 518C9 509 26 502 42 501C58 499 80 507 96 510C112 513 125 519 138 521C150 524 159 523 170 524C181 525 190 527 201 528C211 530 219 533 231 534C242 534 255 532 268 533C281 534 298 534 309 539C319 544 325 554 331 562C336 570 335 580 341 588C347 597 357 603 366 612C374 620 389 630 392 640Z"/><path class="contour" pathLength="1" style="--i:14" d="M447 640C450 652 445 668 434 678C423 689 397 697 381 703C364 710 346 714 333 719C320 725 312 730 302 736C292 741 282 745 272 752C263 758 256 764 246 774C237 784 230 802 217 814C205 826 187 842 170 846C153 850 132 845 116 837C100 830 89 813 77 804C65 794 55 786 42 779C30 772 13 770 2 762C-8 754 -17 744 -22 733C-26 723 -23 709 -24 698C-25 688 -26 678 -28 669C-30 659 -35 650 -35 640C-36 630 -31 621 -30 611C-28 601 -25 593 -27 581C-29 568 -40 552 -42 537C-44 521 -48 500 -39 488C-31 476 -10 468 10 466C29 464 58 473 77 477C97 482 114 489 129 492C145 494 157 493 170 495C183 496 196 498 208 500C221 502 232 506 246 507C260 508 277 505 293 506C309 507 330 508 343 514C356 520 364 532 371 542C378 553 377 565 384 576C391 586 404 594 415 605C425 615 444 628 447 640Z"/><path class="contour" pathLength="1" style="--i:15" d="M503 640C507 655 500 673 487 686C473 698 443 708 423 716C403 724 382 729 366 735C350 742 340 749 328 755C316 761 304 766 293 774C282 781 273 788 262 801C251 813 242 834 227 848C212 863 190 882 170 887C150 892 124 885 105 877C87 869 73 848 58 836C43 825 32 815 17 807C2 799 -19 796 -31 786C-44 777 -55 765 -60 752C-65 739 -61 723 -63 710C-64 697 -65 686 -68 674C-70 663 -76 652 -76 640C-77 628 -71 617 -70 605C-68 593 -64 584 -67 569C-69 554 -82 535 -85 516C-87 498 -92 471 -81 457C-71 443 -45 433 -22 431C1 429 35 440 59 445C83 450 103 458 121 462C140 465 154 464 170 466C186 468 201 470 216 473C231 475 244 479 261 480C278 481 298 478 318 479C337 481 362 481 378 489C394 496 403 510 411 523C419 535 418 550 427 563C435 575 451 585 464 598C476 610 499 625 503 640Z"/></g></g></svg>
+  <div class="wrap relative">
+    <a href="/" class="back-link hero__fade" style="--d:.1s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg> Back to start</a>
+    <h1 class="hero__title"><span class="w" style="--i:0">Race</span> <span class="w" style="--i:1">results.</span></h1>
+    <p class="lede hero__fade" style="--d:.6s">Every product I've taken over the finish line, from MVPs to App Store apps built with teams.</p>
+    <dl class="tally hero__fade" style="--d:.8s">
+      <div><dt>Finishers</dt><dd data-count="12">12</dd></div>
+      <div><dt>On app stores</dt><dd data-count="6">6</dd></div>
+      <div><dt>Built with Filament</dt><dd data-count="6">6</dd></div>
+    </dl>
   </div>
-</nav>
-
-<div class="max-w-[1180px] mx-auto px-8 sm:px-10 lg:px-15 pt-16 sm:pt-10 border-x border-border bg-bg">
-
-  <header class="relative -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 pt-16 pb-10 sm:pt-20 sm:pb-15 lg:pt-24 lg:pb-20 border-b border-border">
-    <span class="section-marker" aria-hidden="true"></span>
-    <p class="text-sm font-semibold uppercase tracking-widest text-muted">// projects</p>
-    <h1 class="mt-3.5 text-[clamp(28px,5vw,56px)] font-semibold leading-[0.98] tracking-[-0.02em] text-ink">All Projects</h1>
-    <p class="mt-4 text-[0.9375rem] text-muted max-w-md">
-      A running list of things I've shipped — from open-source packages to production apps built with teams.
-    </p>
-    <a href="/" class="mt-6 inline-block text-sm font-semibold text-primary hover:underline">&larr; Back to home</a>
-  </header>
-
-  <main>
-    <section class="relative -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border">
-      <span class="section-marker" aria-hidden="true"></span>
-
-      <div class="border-t border-border">
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6b31]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#ff6b31] shrink-0">GY</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Gymed</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform for exercise physiologists, physiotherapists, and allied health professionals to plan, deliver, and track client exercise programs.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#ff6b31] transition-colors duration-150 hover:text-primary" href="https://gymed.com.au" target="_blank" rel="noopener">gymed.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6a2c]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#ff6a2c] shrink-0">TK</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">TUKS</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform that connects tradespeople with job opportunities and enables hiring of workers through a unified digital marketplace.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#ff6a2c] transition-colors duration-150 hover:text-primary" href="https://www.tuks.com.au" target="_blank" rel="noopener">tuks.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#ffdf27]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#ffdf27] shrink-0">EC</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Earthworks Connect</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform that connects job posters with contractors to browse earthmoving jobs, hire machines, and find repair services in their local area.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#ffdf27] transition-colors duration-150 hover:text-primary" href="https://www.earthworksconnect.com.au/" target="_blank" rel="noopener">earthworksconnect.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#1e3957]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#1e3957] shrink-0">LH</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">The Lawyers Hub</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform connecting users with verified, upfront lawyers across various practice areas through an easy search and matching system.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#1e3957] transition-colors duration-150 hover:text-primary" href="https://www.thelawyershub.com" target="_blank" rel="noopener">thelawyershub.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#178F8A]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#178F8A] shrink-0">DW</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">My Day My Way</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A secure communication platform enabling families, carers, educators, and health professionals to share real-time updates and coordinate care.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#178F8A] transition-colors duration-150 hover:text-primary" href="https://mydaymyway.com" target="_blank" rel="noopener">mydaymyway.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/my-day-my-way/id6747789571" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-ink border border-border" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-ink shrink-0">LG</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Logoji</h2>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-ink transition-colors duration-150 hover:text-primary" href="https://logoji.com/" target="_blank" rel="noopener">logoji.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/logoji/id6472718677" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-ink border border-border" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-ink shrink-0">AC</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Activfy</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">An all-in-one platform enabling gyms and personal trainers to deliver custom workouts, manage clients, track fitness progress, and sell products through ecommerce and affiliate opportunities.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-ink transition-colors duration-150 hover:text-primary" href="https://activfyapp.com/" target="_blank" rel="noopener">activfyapp.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/activfy/id6463695507" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://play.google.com/store/apps/details?id=com.appetiser.activfy" target="_blank" rel="noopener">Play Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#43a832]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#43a832] shrink-0">TP</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">That Pet App</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A veterinarian-designed app that centralizes pet health management, including medical records, medication reminders, and care coordination with family and caregivers.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#43a832] transition-colors duration-150 hover:text-primary" href="https://www.thatpetapp.com/" target="_blank" rel="noopener">thatpetapp.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/us/app/spaces-follow-businesses/id1099748482" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://play.google.com/store/apps/details?id=com.wix.android&hl=en&gl=US" target="_blank" rel="noopener">Play Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#0085AA]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#0085AA] shrink-0">AL</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Afterlife</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">A digital legacy management platform that lets users organize and preserve final wishes, important documents, memories, and personal letters to share with loved ones after they pass away.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#0085AA] transition-colors duration-150 hover:text-primary" href="https://afterlifeapp.net" target="_blank" rel="noopener">afterlifeapp.net<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#DA4CF5]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#DA4CF5] shrink-0">AB</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Airbabble</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">The free global voice-note app where you can kick off a group chat on any topic and connect with voices around the world.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#DA4CF5] transition-colors duration-150 hover:text-primary" href="https://airbabble.com/" target="_blank" rel="noopener">airbabble.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/us/app/airbabble/id1600624984" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#e0a458]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <img src="assets/logos/hyvhr.svg" alt="HyvHR logo" class="w-10 h-10 rounded-md border border-border bg-surface object-contain p-1.5 shrink-0">
-            <div class="min-w-0">
-              <h2 class="text-lg font-bold text-ink">HyvHR</h2>
-              <p class="mt-2 text-sm text-muted max-w-xl">An HR platform that brings onboarding, performance reviews and employee engagement into a single workspace. Full-stack engineer: built the product end to end, from the NestJS API and data model through to the Nuxt front end.</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span class="tag">NestJS</span>
-                <span class="tag">Vue.js</span>
-                <span class="tag">Nuxt.js</span>
-                <span class="tag">AWS</span>
-                <span class="tag">Stripe</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#B8BA9E]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#B8BA9E] shrink-0">MW</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h2 class="text-lg font-bold text-ink">Move With Us</h2>
-                <p class="mt-2 text-sm text-muted max-w-xl">An online fitness app offering customizable workout programs, nutrition guidance, and progress tracking tools designed for women's health and fitness goals.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#B8BA9E] transition-colors duration-150 hover:text-primary" href="http://movewithus.com.au" target="_blank" rel="noopener">movewithus.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/move-with-us/id1523442465" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://play.google.com/store/apps/details?id=com.appetiser.bbr.bodiesbyrachel&hl=en" target="_blank" rel="noopener">Play Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer id="site-footer" class="scroll-mt-6">
-    <div class="terminal-dark -mx-8 sm:-mx-10 lg:-mx-15 border border-border bg-surface overflow-hidden">
-      <div class="flex items-center gap-1.5 border-b border-border bg-bg px-4 py-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" aria-hidden="true"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" aria-hidden="true"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]" aria-hidden="true"></span>
-        <span class="ml-2 text-xs text-muted">contact.sh</span>
-      </div>
-
-      <div class="p-5">
-        <p class="prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> whoami</p>
-
-        <nav class="mt-4 flex flex-col gap-2" aria-label="Contact">
-          <a class="opt text-[#8b94a0] [--icon-color:#8b94a0]" href="https://github.com/ronssij" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-            --github
-          </a>
-          <a class="opt text-[#0A66C2] [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg>
-            --linkedin
-          </a>
-          <a class="opt text-[#EA4AAA] [--icon-color:#EA4AAA]" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
-            --sponsor
-          </a>
-          <a class="opt text-[#EA4335] [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-            --email
-          </a>
-        </nav>
-
-        <p class="mt-4 prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> <span class="cursor" aria-hidden="true"></span></p>
-      </div>
-
-      <div class="border-t border-border px-5 py-4 flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
-        <span>&copy; 2026 CJ Ronxel Cabug-os</span>
-        <span>Davao City, Philippines</span>
+</section>
+<section id="work" class="section pt-6" data-gauge="Results">
+  <div class="wrap">
+    <div class="results-bar">
+      <div class="filters" role="group" aria-label="Filter projects by technology"><button type="button" class="filter" data-filter="all" aria-pressed="true">All</button><button type="button" class="filter" data-filter="laravel" aria-pressed="false">Laravel</button><button type="button" class="filter" data-filter="filamentphp" aria-pressed="false">Filament</button><button type="button" class="filter" data-filter="vuejs" aria-pressed="false">Vue.js</button><button type="button" class="filter" data-filter="nuxtjs" aria-pressed="false">Nuxt</button><button type="button" class="filter" data-filter="nestjs" aria-pressed="false">NestJS</button><button type="button" class="filter" data-filter="mobile" aria-pressed="false">Mobile apps</button></div>
+      <p class="results-count" aria-live="polite"><b id="results-n">12</b> finishers</p>
+    </div>
+    <div class="results-head" aria-hidden="true"><span>Bib</span><span>Product</span><span>Stack</span><span>Links</span></div>
+    <ol class="results" id="results"><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp" style="--brand:#d4501a;--i:0">
+  <span class="result__pos">01</span>
+  <div class="result__main"><h2 class="result__name">Gymed</h2><p class="result__desc">A platform for exercise physiologists, physiotherapists, and allied health professionals to plan, deliver, and track client exercise programs.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://gymed.com.au" target="_blank" rel="noopener">gymed.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp" style="--brand:#cf4c16;--i:1">
+  <span class="result__pos">02</span>
+  <div class="result__main"><h2 class="result__name">TUKS</h2><p class="result__desc">A platform that connects tradespeople with job opportunities and enables hiring of workers through a unified digital marketplace.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://www.tuks.com.au" target="_blank" rel="noopener">tuks.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp" style="--brand:#8a7000;--i:2">
+  <span class="result__pos">03</span>
+  <div class="result__main"><h2 class="result__name">Earthworks Connect</h2><p class="result__desc">A platform that connects job posters with contractors to browse earthmoving jobs, hire machines, and find repair services in their local area.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://www.earthworksconnect.com.au/" target="_blank" rel="noopener">earthworksconnect.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp" style="--brand:#1e3957;--i:3">
+  <span class="result__pos">04</span>
+  <div class="result__main"><h2 class="result__name">The Lawyers Hub</h2><p class="result__desc">A platform connecting users with verified, upfront lawyers across various practice areas through an easy search and matching system.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://www.thelawyershub.com" target="_blank" rel="noopener">thelawyershub.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp mobile" style="--brand:#178F8A;--i:0">
+  <span class="result__pos">05</span>
+  <div class="result__main"><h2 class="result__name">My Day My Way<span class="result__badge">App Store</span></h2><p class="result__desc">A secure communication platform enabling families, carers, educators, and health professionals to share real-time updates and coordinate care.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://mydaymyway.com" target="_blank" rel="noopener">mydaymyway.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/my-day-my-way/id6747789571" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql filamentphp mobile" style="--brand:#677d6a;--i:1">
+  <span class="result__pos">06</span>
+  <div class="result__main"><h2 class="result__name">Logoji<span class="result__badge">App Store</span></h2><p class="result__desc">Web platform and App Store app.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="result__links"><a href="https://logoji.com/" target="_blank" rel="noopener">logoji.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/logoji/id6472718677" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql mobile" style="--brand:#40534c;--i:2">
+  <span class="result__pos">07</span>
+  <div class="result__main"><h2 class="result__name">Activfy<span class="result__badge">App Store</span></h2><p class="result__desc">An all-in-one platform enabling gyms and personal trainers to deliver custom workouts, manage clients, track fitness progress, and sell products through ecommerce and affiliate opportunities.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="result__links"><a href="https://activfyapp.com/" target="_blank" rel="noopener">activfyapp.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/activfy/id6463695507" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.appetiser.activfy" target="_blank" rel="noopener">Play Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql mobile" style="--brand:#2f7d22;--i:3">
+  <span class="result__pos">08</span>
+  <div class="result__main"><h2 class="result__name">That Pet App<span class="result__badge">App Store</span></h2><p class="result__desc">A veterinarian-designed app that centralizes pet health management, including medical records, medication reminders, and care coordination with family and caregivers.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="result__links"><a href="https://www.thatpetapp.com/" target="_blank" rel="noopener">thatpetapp.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/us/app/spaces-follow-businesses/id1099748482" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.wix.android&amp;hl=en&amp;gl=US" target="_blank" rel="noopener">Play Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql" style="--brand:#0085AA;--i:0">
+  <span class="result__pos">09</span>
+  <div class="result__main"><h2 class="result__name">Afterlife</h2><p class="result__desc">A digital legacy management platform that lets users organize and preserve final wishes, important documents, memories, and personal letters to share with loved ones after they pass away.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="result__links"><a href="https://afterlifeapp.net" target="_blank" rel="noopener">afterlifeapp.net<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql mobile" style="--brand:#b43fd0;--i:1">
+  <span class="result__pos">10</span>
+  <div class="result__main"><h2 class="result__name">Airbabble<span class="result__badge">App Store</span></h2><p class="result__desc">The free global voice-note app where you can kick off a group chat on any topic and connect with voices around the world.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="result__links"><a href="https://airbabble.com/" target="_blank" rel="noopener">airbabble.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/us/app/airbabble/id1600624984" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li><li class="result" data-reveal="rise" data-tags="nestjs vuejs nuxtjs aws stripe" style="--brand:#a8783f;--i:2">
+  <span class="result__pos">11</span>
+  <div class="result__main"><h2 class="result__name">HyvHR</h2><p class="result__desc">An HR platform that brings onboarding, performance reviews and employee engagement into a single workspace. Full-stack engineer: built the product end to end, from the NestJS API and data model through to the Nuxt front end.</p></div>
+  <div class="result__tags"><span class="tag">NestJS</span><span class="tag">Vue.js</span><span class="tag">Nuxt.js</span><span class="tag">AWS</span><span class="tag">Stripe</span></div>
+  <div class="result__links"><span class="result__private">Private product</span></div>
+</li><li class="result" data-reveal="rise" data-tags="laravel php vuejs mysql mobile" style="--brand:#6b6d52;--i:3">
+  <span class="result__pos">12</span>
+  <div class="result__main"><h2 class="result__name">Move With Us<span class="result__badge">App Store</span></h2><p class="result__desc">An online fitness app offering customizable workout programs, nutrition guidance, and progress tracking tools designed for women&#x27;s health and fitness goals.</p></div>
+  <div class="result__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="result__links"><a href="http://movewithus.com.au" target="_blank" rel="noopener">movewithus.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/move-with-us/id1523442465" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.appetiser.bbr.bodiesbyrachel&amp;hl=en" target="_blank" rel="noopener">Play Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</li></ol>
+    <p id="no-results" class="hidden py-10 text-center text-muted">No races on this trail yet.</p>
+  </div>
+</section><section id="contact" class="section pt-0" data-gauge="Finish">
+  <div class="wrap">
+    <div class="finish" id="finish" data-reveal="pop">
+      <svg class="topo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="topo__drift"><g data-depth="18"><path class="contour" pathLength="1" style="--i:1" d="M974 260C975 262 973 264 971 266C970 268 969 269 968 271C967 273 966 275 964 276C963 278 960 279 958 280C956 280 953 281 950 281C948 282 946 283 944 283C942 284 939 285 937 285C935 284 932 283 930 282C928 282 926 280 924 280C922 280 920 282 917 282C914 283 909 285 906 285C902 286 899 285 896 284C894 282 893 280 892 278C892 276 891 273 891 271C892 269 892 267 893 265C893 263 896 262 897 260C898 258 900 257 900 256C901 254 899 253 899 251C899 249 898 247 898 245C899 244 901 242 903 241C905 240 908 240 910 239C912 238 914 237 915 235C917 234 919 231 921 230C924 229 927 228 930 228C933 228 936 229 938 231C941 232 943 233 945 234C947 236 949 237 950 239C951 241 951 243 951 245C952 247 951 248 953 249C954 250 957 250 960 251C963 252 968 253 970 254C973 256 974 258 974 260Z"/><path class="contour" pathLength="1" style="--i:2" d="M1019 260C1019 264 1015 268 1013 272C1011 275 1008 279 1006 282C1003 285 1002 289 999 292C995 295 991 297 986 299C981 301 976 302 971 303C966 304 962 306 958 307C953 308 949 310 944 309C939 309 934 306 930 305C926 304 923 301 918 301C914 301 910 303 903 305C897 307 888 310 882 311C875 311 867 310 863 307C858 304 856 299 855 295C853 291 853 286 853 282C853 278 853 274 855 270C857 267 861 263 864 260C866 257 870 255 871 252C871 249 869 246 868 242C868 239 865 234 867 230C868 227 872 224 876 222C880 220 886 220 890 218C894 216 897 214 901 211C905 208 908 203 913 200C918 198 924 196 930 196C936 196 942 199 947 201C952 203 957 206 960 209C964 212 968 215 970 218C972 222 972 227 973 230C974 234 973 237 976 239C978 241 985 241 990 242C996 244 1006 246 1011 249C1016 252 1019 256 1019 260Z"/><path class="contour" pathLength="1" style="--i:3" d="M1063 260C1064 266 1058 272 1054 277C1051 283 1047 288 1044 293C1040 298 1038 304 1033 308C1028 313 1021 316 1014 319C1007 321 998 322 991 324C984 326 978 329 972 330C965 332 958 334 951 334C944 333 936 330 930 327C924 325 919 321 913 321C906 321 899 325 890 327C881 330 868 336 857 336C847 337 836 334 829 331C823 327 820 319 817 313C815 307 814 300 814 293C815 287 815 281 818 276C820 270 827 265 830 260C834 255 840 252 841 248C842 243 838 239 838 233C837 228 833 221 835 216C837 211 843 207 849 204C855 201 864 200 870 197C876 195 881 191 886 186C892 182 897 174 904 170C912 167 922 164 930 164C938 165 948 168 955 172C963 175 970 179 976 183C981 187 987 192 990 197C993 203 992 210 994 215C995 220 994 225 998 228C1003 231 1012 231 1021 234C1030 236 1044 239 1051 243C1059 247 1063 254 1063 260Z"/><path class="contour" pathLength="1" style="--i:4" d="M1108 260C1108 268 1100 276 1096 283C1091 290 1086 297 1082 304C1077 311 1074 319 1068 324C1061 330 1051 335 1042 338C1033 342 1021 343 1012 346C1002 348 994 352 986 354C977 356 967 359 958 358C949 358 939 353 930 350C921 347 916 341 907 341C898 341 889 346 877 350C865 353 847 361 833 361C820 362 805 359 796 354C787 349 783 339 780 330C776 322 776 313 776 305C776 296 777 288 780 281C784 273 792 266 797 260C802 254 809 249 811 243C813 237 808 231 807 224C805 217 801 207 803 201C806 194 815 189 822 185C830 181 842 181 850 177C859 173 864 167 872 161C879 155 886 145 896 140C906 135 919 132 930 133C941 133 953 138 963 142C974 146 983 152 991 157C998 163 1006 169 1010 177C1014 184 1013 194 1015 200C1017 207 1015 213 1021 217C1027 222 1039 222 1051 225C1063 228 1083 232 1092 237C1101 243 1107 252 1108 260Z"/><path class="contour" pathLength="1" style="--i:5" d="M1152 260C1153 270 1143 280 1137 289C1132 298 1125 306 1119 315C1114 324 1110 333 1102 340C1094 348 1082 354 1070 358C1058 362 1044 364 1032 367C1020 370 1011 375 999 377C988 380 977 384 965 383C953 382 941 376 930 372C919 369 912 362 901 362C890 362 879 368 864 372C848 376 826 386 809 387C792 388 773 384 762 378C751 371 746 358 742 348C738 338 737 326 737 316C738 306 739 295 743 286C747 277 758 268 764 260C770 252 779 247 781 239C783 232 777 224 776 215C774 206 768 194 772 186C775 178 786 171 796 166C805 161 820 161 831 156C841 151 848 144 857 137C867 129 875 116 887 110C900 104 916 100 930 101C944 101 959 107 972 113C985 118 996 124 1006 132C1016 139 1025 147 1030 156C1035 165 1034 177 1036 185C1039 194 1036 202 1044 207C1051 212 1066 212 1081 216C1096 220 1121 225 1132 232C1144 239 1151 250 1152 260Z"/><path class="contour" pathLength="1" style="--i:6" d="M1196 260C1197 271 1185 284 1179 295C1172 306 1164 316 1157 326C1150 336 1146 348 1136 357C1126 365 1112 372 1098 378C1084 383 1067 385 1053 388C1038 392 1027 398 1013 401C1000 404 986 409 972 408C958 407 943 399 930 395C917 391 909 382 895 382C882 382 869 389 850 395C832 400 805 411 785 412C764 413 742 409 728 401C715 393 709 378 705 365C700 353 699 339 699 327C699 315 700 302 706 291C711 280 723 269 731 260C738 251 749 244 752 235C754 226 747 217 745 206C743 196 736 181 740 171C744 161 757 153 769 147C780 141 798 141 811 135C823 129 831 121 843 112C854 103 864 88 879 80C894 73 913 68 930 69C947 69 965 77 980 83C995 89 1010 97 1021 106C1033 115 1043 124 1050 135C1056 146 1055 160 1058 171C1061 181 1058 190 1067 196C1075 202 1094 202 1111 207C1129 212 1159 217 1173 226C1187 235 1196 249 1196 260Z"/><path class="contour" pathLength="1" style="--i:7" d="M1241 260C1242 273 1228 288 1220 300C1212 313 1203 325 1195 337C1187 349 1182 363 1171 373C1159 383 1142 391 1126 397C1110 403 1089 405 1073 410C1057 414 1043 420 1027 424C1011 428 995 433 979 432C963 431 945 422 930 417C915 412 905 402 890 402C874 402 859 411 837 417C816 423 784 436 760 438C737 439 710 434 695 425C679 416 673 397 667 383C661 369 660 353 660 338C661 324 662 309 668 296C674 283 689 271 698 260C706 249 719 241 722 231C725 221 716 210 714 197C712 185 704 168 708 156C713 145 728 135 742 128C755 121 776 121 791 114C805 107 815 98 828 87C841 77 853 59 870 50C887 42 910 36 930 37C950 38 971 46 989 54C1006 61 1023 70 1036 80C1050 90 1062 101 1069 114C1077 127 1076 144 1079 156C1082 168 1079 178 1089 185C1100 193 1121 193 1141 199C1162 205 1197 210 1213 221C1230 231 1240 247 1241 260Z"/><path class="contour" pathLength="1" style="--i:8" d="M1285 260C1287 275 1270 292 1261 306C1253 321 1242 334 1233 348C1224 362 1218 377 1205 389C1192 400 1173 410 1154 417C1135 424 1112 426 1093 431C1075 436 1059 443 1041 448C1023 452 1004 458 986 457C967 455 947 445 930 440C913 434 901 423 884 423C866 423 848 433 824 439C799 446 763 461 736 463C709 464 679 459 661 448C643 438 636 417 629 401C623 384 622 366 622 349C622 333 624 317 631 302C638 287 654 272 664 260C675 248 689 239 692 227C695 215 686 203 683 188C681 174 671 155 677 142C682 128 699 117 715 109C731 101 754 101 771 93C787 86 798 75 813 63C829 51 842 30 862 20C881 11 907 4 930 5C953 6 977 16 997 24C1017 32 1036 43 1052 55C1067 66 1081 79 1089 93C1097 107 1097 127 1100 141C1104 154 1100 167 1112 175C1124 183 1148 183 1172 190C1195 197 1235 203 1254 215C1273 227 1284 245 1285 260Z"/><path class="contour" pathLength="1" style="--i:9" d="M1330 260C1331 277 1313 295 1303 312C1293 328 1282 343 1271 359C1260 374 1254 392 1239 405C1225 418 1203 428 1182 436C1161 444 1135 447 1114 453C1093 458 1075 466 1055 471C1035 476 1014 483 993 481C972 480 949 469 930 462C911 456 898 443 878 443C858 443 838 454 811 462C783 469 743 487 712 488C682 490 648 483 628 472C608 460 599 437 592 418C584 400 583 379 583 360C584 342 585 324 593 307C601 290 620 274 631 260C643 246 659 236 662 223C666 209 655 196 653 180C650 164 639 142 645 127C651 112 670 100 688 91C706 82 733 81 751 72C769 64 782 52 799 38C816 25 832 1 853 -9C875 -20 905 -27 930 -27C955 -26 983 -15 1005 -5C1028 4 1049 16 1067 29C1084 42 1100 56 1109 72C1118 88 1117 111 1122 126C1126 141 1121 155 1135 164C1148 173 1175 174 1202 181C1229 189 1273 196 1294 209C1316 222 1328 243 1330 260Z"/></g><g data-depth="36"><path class="contour" pathLength="1" style="--i:10" d="M225 640C226 642 225 646 223 648C221 650 215 651 212 653C209 654 205 655 203 656C200 657 198 658 196 659C194 660 192 661 190 662C189 664 187 665 185 667C183 669 182 672 179 675C177 677 173 680 170 681C167 682 162 681 159 679C156 678 154 675 151 673C149 671 147 669 144 668C142 666 139 666 136 664C134 663 133 661 132 659C131 657 131 654 131 652C131 650 131 648 130 646C130 644 129 642 129 640C129 638 130 636 130 634C130 632 131 631 131 628C130 626 128 622 128 619C127 616 126 612 128 610C130 607 134 606 138 605C142 605 148 607 151 607C155 608 159 610 162 610C165 611 167 611 170 611C173 611 175 612 178 612C180 612 182 613 185 613C188 614 191 613 195 613C198 613 202 614 205 615C207 616 209 618 210 620C212 623 211 625 213 627C214 629 217 631 219 633C221 635 225 638 225 640Z"/><path class="contour" pathLength="1" style="--i:11" d="M281 640C282 645 280 651 276 655C271 659 261 663 254 665C248 668 241 670 235 672C230 674 227 676 223 678C219 680 215 682 211 685C207 687 204 689 201 694C197 698 194 705 189 709C184 714 177 721 170 722C163 724 155 722 148 719C142 716 138 709 133 705C128 702 124 698 119 696C114 693 107 692 103 689C99 686 95 682 93 677C92 673 93 668 92 663C92 659 92 655 91 651C90 648 88 644 88 640C88 636 90 632 90 628C91 624 92 621 91 616C90 611 86 605 85 599C84 593 83 584 86 579C90 574 98 571 106 570C114 570 125 573 133 575C141 577 148 579 154 581C160 582 165 581 170 582C175 583 180 583 185 584C190 585 195 586 200 587C206 587 213 586 219 586C226 587 234 587 239 590C245 592 248 597 250 601C253 605 253 610 256 614C258 618 264 622 268 626C272 630 280 635 281 640Z"/><path class="contour" pathLength="1" style="--i:12" d="M336 640C338 647 335 657 328 663C322 669 306 674 296 678C286 682 276 684 268 688C260 691 255 694 249 698C243 701 237 703 231 707C226 711 221 714 216 720C210 727 206 737 198 744C191 751 180 761 170 763C160 766 147 763 138 758C128 754 122 744 114 738C107 732 101 728 93 724C86 719 76 718 69 713C63 709 58 702 55 696C52 690 54 682 54 675C53 669 52 663 51 657C50 651 47 646 47 640C47 634 49 629 50 623C51 617 53 612 52 604C50 597 44 587 43 578C42 569 39 556 44 549C50 541 62 537 74 535C86 534 103 540 114 542C126 545 136 549 146 551C155 553 162 552 170 553C178 554 185 555 193 556C200 557 207 560 215 560C224 561 234 559 244 560C254 560 266 561 274 564C282 568 287 575 291 581C295 588 294 595 298 601C303 608 311 612 317 619C323 625 334 633 336 640Z"/><path class="contour" pathLength="1" style="--i:13" d="M392 640C394 650 390 662 381 671C372 679 352 685 339 691C325 696 311 699 301 703C290 708 284 712 275 717C267 721 259 724 252 729C245 734 238 739 231 747C224 756 218 769 208 779C198 788 184 801 170 805C156 808 139 804 127 798C114 792 105 779 95 771C86 763 78 757 68 751C58 746 44 744 36 738C27 732 20 723 17 715C13 706 16 695 15 687C14 678 13 671 12 663C10 655 6 648 6 640C6 632 9 625 10 617C11 609 14 602 12 592C11 583 2 570 0 558C-1 545 -4 528 2 518C9 509 26 502 42 501C58 499 80 507 96 510C112 513 125 519 138 521C150 524 159 523 170 524C181 525 190 527 201 528C211 530 219 533 231 534C242 534 255 532 268 533C281 534 298 534 309 539C319 544 325 554 331 562C336 570 335 580 341 588C347 597 357 603 366 612C374 620 389 630 392 640Z"/><path class="contour" pathLength="1" style="--i:14" d="M447 640C450 652 445 668 434 678C423 689 397 697 381 703C364 710 346 714 333 719C320 725 312 730 302 736C292 741 282 745 272 752C263 758 256 764 246 774C237 784 230 802 217 814C205 826 187 842 170 846C153 850 132 845 116 837C100 830 89 813 77 804C65 794 55 786 42 779C30 772 13 770 2 762C-8 754 -17 744 -22 733C-26 723 -23 709 -24 698C-25 688 -26 678 -28 669C-30 659 -35 650 -35 640C-36 630 -31 621 -30 611C-28 601 -25 593 -27 581C-29 568 -40 552 -42 537C-44 521 -48 500 -39 488C-31 476 -10 468 10 466C29 464 58 473 77 477C97 482 114 489 129 492C145 494 157 493 170 495C183 496 196 498 208 500C221 502 232 506 246 507C260 508 277 505 293 506C309 507 330 508 343 514C356 520 364 532 371 542C378 553 377 565 384 576C391 586 404 594 415 605C425 615 444 628 447 640Z"/><path class="contour" pathLength="1" style="--i:15" d="M503 640C507 655 500 673 487 686C473 698 443 708 423 716C403 724 382 729 366 735C350 742 340 749 328 755C316 761 304 766 293 774C282 781 273 788 262 801C251 813 242 834 227 848C212 863 190 882 170 887C150 892 124 885 105 877C87 869 73 848 58 836C43 825 32 815 17 807C2 799 -19 796 -31 786C-44 777 -55 765 -60 752C-65 739 -61 723 -63 710C-64 697 -65 686 -68 674C-70 663 -76 652 -76 640C-77 628 -71 617 -70 605C-68 593 -64 584 -67 569C-69 554 -82 535 -85 516C-87 498 -92 471 -81 457C-71 443 -45 433 -22 431C1 429 35 440 59 445C83 450 103 458 121 462C140 465 154 464 170 466C186 468 201 470 216 473C231 475 244 479 261 480C278 481 298 478 318 479C337 481 362 481 378 489C394 496 403 510 411 523C419 535 418 550 427 563C435 575 451 585 464 598C476 610 499 625 503 640Z"/></g></g></svg>
+      <div class="finish__tape" aria-hidden="true"><span></span><span></span></div>
+      <p class="eyebrow !text-[#d6bd98]/80 relative">KM 42.2 · <b class="!text-[#d6bd98]">Finish line</b></p>
+      <h2 class="finish__title relative">Got an idea?<br><em>Let's run it to launch.</em></h2>
+      <p class="relative mx-auto mt-5 max-w-lg text-lg opacity-80">I'm available for new projects. Tell me what you're building and I'll get back to you with how I'd get your MVP to the finish line.</p>
+      <div class="relative mt-9 flex flex-wrap justify-center gap-3">
+        <a class="btn btn--pop" href="mailto:ronssij@gmail.com?subject=Let%27s%20build%20my%20MVP">ronssij@gmail.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg></span>LinkedIn</a>
+        <a class="btn btn--ghost" href="https://github.com/ronssij" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></span>GitHub</a>
+        <a class="btn btn--ghost" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></span>Sponsor</a>
       </div>
     </div>
-  </footer>
-
-</div>
-
-<script>
-  (function () {
-    var el = document.getElementById('nav-clock');
-    if (!el) return;
-    var fmt = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Asia/Manila',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    });
-    function tick() {
-      el.textContent = 'Davao, PH ' + fmt.format(new Date());
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-</script>
-
-<script>
-  (function () {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      if (isLight) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      }
-    });
-  })();
-</script>
-
+    <footer class="footer">
+      <span>&copy; 2026 CJ Ronxel Cabug-os</span>
+      <span>Built in Davao City, Philippines · between long runs</span>
+      <a href="#top" class="hover:text-pop">Back to start ↑</a>
+    </footer>
+  </div>
+</section></main>
 </body>
 </html>

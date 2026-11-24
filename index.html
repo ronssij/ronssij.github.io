@@ -3,27 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ronssij — CJ Ronxel Cabug-os</title>
-<meta name="description" content="CJ Ronxel Cabug-os — Senior Laravel Engineer, Tech Lead &amp; Technical Architect. Author of filament-simple-draft.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230b0d10'/%3E%3Ctext x='12' y='17' font-family='monospace' font-size='14' fill='%23e0a458' text-anchor='middle'%3E%3E_%3C/text%3E%3C/svg%3E">
+<title>CJ Ronxel Cabug-os · I build MVPs that make it to launch</title>
+<meta name="description" content="CJ Ronxel Cabug-os, Senior Laravel and full-stack developer from Davao, PH. I help founders take ideas to launch. Available for new projects.">
+<meta name="theme-color" content="#1a3636">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a3636'/%3E%3Cpath d='M4 25 13 10l4 7 4-5 7 13Z' fill='%23d6bd98'/%3E%3C/svg%3E">
 <script>
   (function () {
-    var stored = localStorage.getItem('theme');
+    var root = document.documentElement;
+    root.classList.add('js');
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
     if (stored) {
-      if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      if (stored === 'light') root.setAttribute('data-theme', 'light');
       return;
     }
-    document.documentElement.setAttribute('data-theme', 'light');
+    root.setAttribute('data-theme', 'light');
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       window.addEventListener('load', function () {
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
-            document.documentElement.classList.add('theme-fade');
-            document.documentElement.offsetHeight;
-            document.documentElement.removeAttribute('data-theme');
-            setTimeout(function () {
-              document.documentElement.classList.remove('theme-fade');
-            }, 700);
+            root.classList.add('theme-fade');
+            root.offsetHeight;
+            root.removeAttribute('data-theme');
+            setTimeout(function () { root.classList.remove('theme-fade'); }, 700);
           });
         });
       });
@@ -32,619 +34,313 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
 </head>
 <body>
-
-<nav class="sticky top-0 z-50" aria-label="Primary">
-  <div class="h-16 max-w-[1180px] mx-auto flex items-stretch border-x border-b border-border bg-bg">
-    <div class="w-16 flex items-center justify-center border-r border-border shrink-0">
-      <svg viewBox="0 0 48 56" class="w-6 h-7 text-ink" fill="none" aria-hidden="true">
-        <path fill="currentColor" d="M24 4 44 15v9H28v8h16v9L24 52 4 41V15z"/>
-        <path fill="currentColor" fill-opacity="0.55" d="M24 4 44 15 24 26 4 15z"/>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-pop focus:px-4 focus:py-2 focus:text-on-pop">Skip to content</a>
+<header class="nav" id="nav">
+  <nav class="nav__bar" aria-label="Primary">
+    <a href="/" class="nav__brand"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M2 26 12 9l5 8 4-5 9 14Z" fill="currentColor"/><path d="M10.2 12.2 12 9l1.8 3-1.8 1.3Z" fill="var(--color-bg)"/><circle cx="24" cy="7" r="2.5" fill="currentColor"/></svg><span>cjronxel</span></a>
+    <div class="nav__links"><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#kit">Kit</a><a href="#contact">Contact</a></div>
+    <span class="avail ml-auto lg:ml-0"><span class="avail__dot" aria-hidden="true"></span><span class="hidden sm:inline">Available</span><span class="sm:hidden">Open</span></span>
+    <span class="nav__clock"><span>DVO</span> <span id="nav-clock">--:--:--</span></span>
+    <button id="theme-toggle" type="button" class="icon-btn" aria-label="Toggle color theme">
+      <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2.5 12h2M19.5 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 14.45a8.5 8.5 0 0 1-10.8-10.8 8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
+    </button>
+  </nav>
+</header>
+<aside class="gauge" aria-hidden="true">
+  <span class="gauge__km" id="gauge-km">KM 0.0</span>
+  <div class="gauge__track"><div class="gauge__ticks"><i></i><i></i><i></i><i></i><i></i></div><div class="gauge__fill"></div><div class="gauge__dot"></div></div>
+  <span class="gauge__label" id="gauge-label">Start</span>
+</aside><main id="main"><section class="hero" id="top" data-gauge="Start">
+  <svg class="topo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="topo__drift"><g data-depth="18"><path class="contour" pathLength="1" style="--i:1" d="M974 260C975 262 973 264 971 266C970 268 969 269 968 271C967 273 966 275 964 276C963 278 960 279 958 280C956 280 953 281 950 281C948 282 946 283 944 283C942 284 939 285 937 285C935 284 932 283 930 282C928 282 926 280 924 280C922 280 920 282 917 282C914 283 909 285 906 285C902 286 899 285 896 284C894 282 893 280 892 278C892 276 891 273 891 271C892 269 892 267 893 265C893 263 896 262 897 260C898 258 900 257 900 256C901 254 899 253 899 251C899 249 898 247 898 245C899 244 901 242 903 241C905 240 908 240 910 239C912 238 914 237 915 235C917 234 919 231 921 230C924 229 927 228 930 228C933 228 936 229 938 231C941 232 943 233 945 234C947 236 949 237 950 239C951 241 951 243 951 245C952 247 951 248 953 249C954 250 957 250 960 251C963 252 968 253 970 254C973 256 974 258 974 260Z"/><path class="contour" pathLength="1" style="--i:2" d="M1019 260C1019 264 1015 268 1013 272C1011 275 1008 279 1006 282C1003 285 1002 289 999 292C995 295 991 297 986 299C981 301 976 302 971 303C966 304 962 306 958 307C953 308 949 310 944 309C939 309 934 306 930 305C926 304 923 301 918 301C914 301 910 303 903 305C897 307 888 310 882 311C875 311 867 310 863 307C858 304 856 299 855 295C853 291 853 286 853 282C853 278 853 274 855 270C857 267 861 263 864 260C866 257 870 255 871 252C871 249 869 246 868 242C868 239 865 234 867 230C868 227 872 224 876 222C880 220 886 220 890 218C894 216 897 214 901 211C905 208 908 203 913 200C918 198 924 196 930 196C936 196 942 199 947 201C952 203 957 206 960 209C964 212 968 215 970 218C972 222 972 227 973 230C974 234 973 237 976 239C978 241 985 241 990 242C996 244 1006 246 1011 249C1016 252 1019 256 1019 260Z"/><path class="contour" pathLength="1" style="--i:3" d="M1063 260C1064 266 1058 272 1054 277C1051 283 1047 288 1044 293C1040 298 1038 304 1033 308C1028 313 1021 316 1014 319C1007 321 998 322 991 324C984 326 978 329 972 330C965 332 958 334 951 334C944 333 936 330 930 327C924 325 919 321 913 321C906 321 899 325 890 327C881 330 868 336 857 336C847 337 836 334 829 331C823 327 820 319 817 313C815 307 814 300 814 293C815 287 815 281 818 276C820 270 827 265 830 260C834 255 840 252 841 248C842 243 838 239 838 233C837 228 833 221 835 216C837 211 843 207 849 204C855 201 864 200 870 197C876 195 881 191 886 186C892 182 897 174 904 170C912 167 922 164 930 164C938 165 948 168 955 172C963 175 970 179 976 183C981 187 987 192 990 197C993 203 992 210 994 215C995 220 994 225 998 228C1003 231 1012 231 1021 234C1030 236 1044 239 1051 243C1059 247 1063 254 1063 260Z"/><path class="contour" pathLength="1" style="--i:4" d="M1108 260C1108 268 1100 276 1096 283C1091 290 1086 297 1082 304C1077 311 1074 319 1068 324C1061 330 1051 335 1042 338C1033 342 1021 343 1012 346C1002 348 994 352 986 354C977 356 967 359 958 358C949 358 939 353 930 350C921 347 916 341 907 341C898 341 889 346 877 350C865 353 847 361 833 361C820 362 805 359 796 354C787 349 783 339 780 330C776 322 776 313 776 305C776 296 777 288 780 281C784 273 792 266 797 260C802 254 809 249 811 243C813 237 808 231 807 224C805 217 801 207 803 201C806 194 815 189 822 185C830 181 842 181 850 177C859 173 864 167 872 161C879 155 886 145 896 140C906 135 919 132 930 133C941 133 953 138 963 142C974 146 983 152 991 157C998 163 1006 169 1010 177C1014 184 1013 194 1015 200C1017 207 1015 213 1021 217C1027 222 1039 222 1051 225C1063 228 1083 232 1092 237C1101 243 1107 252 1108 260Z"/><path class="contour" pathLength="1" style="--i:5" d="M1152 260C1153 270 1143 280 1137 289C1132 298 1125 306 1119 315C1114 324 1110 333 1102 340C1094 348 1082 354 1070 358C1058 362 1044 364 1032 367C1020 370 1011 375 999 377C988 380 977 384 965 383C953 382 941 376 930 372C919 369 912 362 901 362C890 362 879 368 864 372C848 376 826 386 809 387C792 388 773 384 762 378C751 371 746 358 742 348C738 338 737 326 737 316C738 306 739 295 743 286C747 277 758 268 764 260C770 252 779 247 781 239C783 232 777 224 776 215C774 206 768 194 772 186C775 178 786 171 796 166C805 161 820 161 831 156C841 151 848 144 857 137C867 129 875 116 887 110C900 104 916 100 930 101C944 101 959 107 972 113C985 118 996 124 1006 132C1016 139 1025 147 1030 156C1035 165 1034 177 1036 185C1039 194 1036 202 1044 207C1051 212 1066 212 1081 216C1096 220 1121 225 1132 232C1144 239 1151 250 1152 260Z"/><path class="contour" pathLength="1" style="--i:6" d="M1196 260C1197 271 1185 284 1179 295C1172 306 1164 316 1157 326C1150 336 1146 348 1136 357C1126 365 1112 372 1098 378C1084 383 1067 385 1053 388C1038 392 1027 398 1013 401C1000 404 986 409 972 408C958 407 943 399 930 395C917 391 909 382 895 382C882 382 869 389 850 395C832 400 805 411 785 412C764 413 742 409 728 401C715 393 709 378 705 365C700 353 699 339 699 327C699 315 700 302 706 291C711 280 723 269 731 260C738 251 749 244 752 235C754 226 747 217 745 206C743 196 736 181 740 171C744 161 757 153 769 147C780 141 798 141 811 135C823 129 831 121 843 112C854 103 864 88 879 80C894 73 913 68 930 69C947 69 965 77 980 83C995 89 1010 97 1021 106C1033 115 1043 124 1050 135C1056 146 1055 160 1058 171C1061 181 1058 190 1067 196C1075 202 1094 202 1111 207C1129 212 1159 217 1173 226C1187 235 1196 249 1196 260Z"/><path class="contour" pathLength="1" style="--i:7" d="M1241 260C1242 273 1228 288 1220 300C1212 313 1203 325 1195 337C1187 349 1182 363 1171 373C1159 383 1142 391 1126 397C1110 403 1089 405 1073 410C1057 414 1043 420 1027 424C1011 428 995 433 979 432C963 431 945 422 930 417C915 412 905 402 890 402C874 402 859 411 837 417C816 423 784 436 760 438C737 439 710 434 695 425C679 416 673 397 667 383C661 369 660 353 660 338C661 324 662 309 668 296C674 283 689 271 698 260C706 249 719 241 722 231C725 221 716 210 714 197C712 185 704 168 708 156C713 145 728 135 742 128C755 121 776 121 791 114C805 107 815 98 828 87C841 77 853 59 870 50C887 42 910 36 930 37C950 38 971 46 989 54C1006 61 1023 70 1036 80C1050 90 1062 101 1069 114C1077 127 1076 144 1079 156C1082 168 1079 178 1089 185C1100 193 1121 193 1141 199C1162 205 1197 210 1213 221C1230 231 1240 247 1241 260Z"/><path class="contour" pathLength="1" style="--i:8" d="M1285 260C1287 275 1270 292 1261 306C1253 321 1242 334 1233 348C1224 362 1218 377 1205 389C1192 400 1173 410 1154 417C1135 424 1112 426 1093 431C1075 436 1059 443 1041 448C1023 452 1004 458 986 457C967 455 947 445 930 440C913 434 901 423 884 423C866 423 848 433 824 439C799 446 763 461 736 463C709 464 679 459 661 448C643 438 636 417 629 401C623 384 622 366 622 349C622 333 624 317 631 302C638 287 654 272 664 260C675 248 689 239 692 227C695 215 686 203 683 188C681 174 671 155 677 142C682 128 699 117 715 109C731 101 754 101 771 93C787 86 798 75 813 63C829 51 842 30 862 20C881 11 907 4 930 5C953 6 977 16 997 24C1017 32 1036 43 1052 55C1067 66 1081 79 1089 93C1097 107 1097 127 1100 141C1104 154 1100 167 1112 175C1124 183 1148 183 1172 190C1195 197 1235 203 1254 215C1273 227 1284 245 1285 260Z"/><path class="contour" pathLength="1" style="--i:9" d="M1330 260C1331 277 1313 295 1303 312C1293 328 1282 343 1271 359C1260 374 1254 392 1239 405C1225 418 1203 428 1182 436C1161 444 1135 447 1114 453C1093 458 1075 466 1055 471C1035 476 1014 483 993 481C972 480 949 469 930 462C911 456 898 443 878 443C858 443 838 454 811 462C783 469 743 487 712 488C682 490 648 483 628 472C608 460 599 437 592 418C584 400 583 379 583 360C584 342 585 324 593 307C601 290 620 274 631 260C643 246 659 236 662 223C666 209 655 196 653 180C650 164 639 142 645 127C651 112 670 100 688 91C706 82 733 81 751 72C769 64 782 52 799 38C816 25 832 1 853 -9C875 -20 905 -27 930 -27C955 -26 983 -15 1005 -5C1028 4 1049 16 1067 29C1084 42 1100 56 1109 72C1118 88 1117 111 1122 126C1126 141 1121 155 1135 164C1148 173 1175 174 1202 181C1229 189 1273 196 1294 209C1316 222 1328 243 1330 260Z"/></g><g data-depth="36"><path class="contour" pathLength="1" style="--i:10" d="M225 640C226 642 225 646 223 648C221 650 215 651 212 653C209 654 205 655 203 656C200 657 198 658 196 659C194 660 192 661 190 662C189 664 187 665 185 667C183 669 182 672 179 675C177 677 173 680 170 681C167 682 162 681 159 679C156 678 154 675 151 673C149 671 147 669 144 668C142 666 139 666 136 664C134 663 133 661 132 659C131 657 131 654 131 652C131 650 131 648 130 646C130 644 129 642 129 640C129 638 130 636 130 634C130 632 131 631 131 628C130 626 128 622 128 619C127 616 126 612 128 610C130 607 134 606 138 605C142 605 148 607 151 607C155 608 159 610 162 610C165 611 167 611 170 611C173 611 175 612 178 612C180 612 182 613 185 613C188 614 191 613 195 613C198 613 202 614 205 615C207 616 209 618 210 620C212 623 211 625 213 627C214 629 217 631 219 633C221 635 225 638 225 640Z"/><path class="contour" pathLength="1" style="--i:11" d="M281 640C282 645 280 651 276 655C271 659 261 663 254 665C248 668 241 670 235 672C230 674 227 676 223 678C219 680 215 682 211 685C207 687 204 689 201 694C197 698 194 705 189 709C184 714 177 721 170 722C163 724 155 722 148 719C142 716 138 709 133 705C128 702 124 698 119 696C114 693 107 692 103 689C99 686 95 682 93 677C92 673 93 668 92 663C92 659 92 655 91 651C90 648 88 644 88 640C88 636 90 632 90 628C91 624 92 621 91 616C90 611 86 605 85 599C84 593 83 584 86 579C90 574 98 571 106 570C114 570 125 573 133 575C141 577 148 579 154 581C160 582 165 581 170 582C175 583 180 583 185 584C190 585 195 586 200 587C206 587 213 586 219 586C226 587 234 587 239 590C245 592 248 597 250 601C253 605 253 610 256 614C258 618 264 622 268 626C272 630 280 635 281 640Z"/><path class="contour" pathLength="1" style="--i:12" d="M336 640C338 647 335 657 328 663C322 669 306 674 296 678C286 682 276 684 268 688C260 691 255 694 249 698C243 701 237 703 231 707C226 711 221 714 216 720C210 727 206 737 198 744C191 751 180 761 170 763C160 766 147 763 138 758C128 754 122 744 114 738C107 732 101 728 93 724C86 719 76 718 69 713C63 709 58 702 55 696C52 690 54 682 54 675C53 669 52 663 51 657C50 651 47 646 47 640C47 634 49 629 50 623C51 617 53 612 52 604C50 597 44 587 43 578C42 569 39 556 44 549C50 541 62 537 74 535C86 534 103 540 114 542C126 545 136 549 146 551C155 553 162 552 170 553C178 554 185 555 193 556C200 557 207 560 215 560C224 561 234 559 244 560C254 560 266 561 274 564C282 568 287 575 291 581C295 588 294 595 298 601C303 608 311 612 317 619C323 625 334 633 336 640Z"/><path class="contour" pathLength="1" style="--i:13" d="M392 640C394 650 390 662 381 671C372 679 352 685 339 691C325 696 311 699 301 703C290 708 284 712 275 717C267 721 259 724 252 729C245 734 238 739 231 747C224 756 218 769 208 779C198 788 184 801 170 805C156 808 139 804 127 798C114 792 105 779 95 771C86 763 78 757 68 751C58 746 44 744 36 738C27 732 20 723 17 715C13 706 16 695 15 687C14 678 13 671 12 663C10 655 6 648 6 640C6 632 9 625 10 617C11 609 14 602 12 592C11 583 2 570 0 558C-1 545 -4 528 2 518C9 509 26 502 42 501C58 499 80 507 96 510C112 513 125 519 138 521C150 524 159 523 170 524C181 525 190 527 201 528C211 530 219 533 231 534C242 534 255 532 268 533C281 534 298 534 309 539C319 544 325 554 331 562C336 570 335 580 341 588C347 597 357 603 366 612C374 620 389 630 392 640Z"/><path class="contour" pathLength="1" style="--i:14" d="M447 640C450 652 445 668 434 678C423 689 397 697 381 703C364 710 346 714 333 719C320 725 312 730 302 736C292 741 282 745 272 752C263 758 256 764 246 774C237 784 230 802 217 814C205 826 187 842 170 846C153 850 132 845 116 837C100 830 89 813 77 804C65 794 55 786 42 779C30 772 13 770 2 762C-8 754 -17 744 -22 733C-26 723 -23 709 -24 698C-25 688 -26 678 -28 669C-30 659 -35 650 -35 640C-36 630 -31 621 -30 611C-28 601 -25 593 -27 581C-29 568 -40 552 -42 537C-44 521 -48 500 -39 488C-31 476 -10 468 10 466C29 464 58 473 77 477C97 482 114 489 129 492C145 494 157 493 170 495C183 496 196 498 208 500C221 502 232 506 246 507C260 508 277 505 293 506C309 507 330 508 343 514C356 520 364 532 371 542C378 553 377 565 384 576C391 586 404 594 415 605C425 615 444 628 447 640Z"/><path class="contour" pathLength="1" style="--i:15" d="M503 640C507 655 500 673 487 686C473 698 443 708 423 716C403 724 382 729 366 735C350 742 340 749 328 755C316 761 304 766 293 774C282 781 273 788 262 801C251 813 242 834 227 848C212 863 190 882 170 887C150 892 124 885 105 877C87 869 73 848 58 836C43 825 32 815 17 807C2 799 -19 796 -31 786C-44 777 -55 765 -60 752C-65 739 -61 723 -63 710C-64 697 -65 686 -68 674C-70 663 -76 652 -76 640C-77 628 -71 617 -70 605C-68 593 -64 584 -67 569C-69 554 -82 535 -85 516C-87 498 -92 471 -81 457C-71 443 -45 433 -22 431C1 429 35 440 59 445C83 450 103 458 121 462C140 465 154 464 170 466C186 468 201 470 216 473C231 475 244 479 261 480C278 481 298 478 318 479C337 481 362 481 378 489C394 496 403 510 411 523C419 535 418 550 427 563C435 575 451 585 464 598C476 610 499 625 503 640Z"/></g></g></svg>
+  <div class="wrap relative" id="hero-inner">
+    <div class="hero__fade flex flex-wrap items-center gap-3" style="--d:.1s">
+      <span class="avail"><span class="avail__dot" aria-hidden="true"></span>Available for new projects</span>
+      <span class="eyebrow">CJ Ronxel Cabug-os · Software developer · Davao, PH</span>
+    </div>
+    <h1 class="hero__title"><span class="w" style="--i:0">I</span> <span class="w" style="--i:1">solve</span> <span class="w" style="--i:2">problems</span> <span class="w" style="--i:3">and</span> <span class="w" style="--i:4"><em>ship</em></span> <span class="w" style="--i:5"><em>software.</em></span></h1>
+    <p class="lede hero__fade" style="--d:.9s">I help founders take ideas to launch. 10 years building scalable backends, APIs, and full-stack products (Laravel, Vue, React) that people actually use.</p>
+    <div class="hero__fade mt-8 flex flex-wrap gap-3" style="--d:1.05s">
+      <a class="btn btn--pop" href="#contact">Let's build your MVP <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      <a class="btn btn--ghost" href="#work">See finished races</a>
+    </div>
+    <div class="profile" aria-hidden="true">
+      <svg viewBox="0 0 1200 240" preserveAspectRatio="xMidYMid meet">
+        <defs><linearGradient id="profileFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--color-pop)" stop-opacity=".22"/><stop offset="1" stop-color="var(--color-pop)" stop-opacity="0"/></linearGradient></defs>
+        <path class="profile__area" d="M0 210 C90 205 130 190 190 178 S300 120 360 132 S470 190 540 160 S660 60 750 72 S870 150 930 132 S1070 40 1130 48 L1200 54 L1200 240 L0 240Z"/>
+        <path id="profilePath" class="profile__line" pathLength="1" d="M0 210 C90 205 130 190 190 178 S300 120 360 132 S470 190 540 160 S660 60 750 72 S870 150 930 132 S1070 40 1130 48 L1200 54"/>
+        <g class="hidden md:inline"><g class="profile__mark" style="--d:1.0s"><line x1="20" y1="194" x2="20" y2="240"/><text x="20" y="186" text-anchor="middle">KM 0 · IDEA</text></g><g class="profile__mark" style="--d:1.6s"><line x1="540" y1="154" x2="540" y2="240"/><text x="540" y="146" text-anchor="middle">KM 21 · MVP</text></g><g class="profile__mark" style="--d:2.2s"><line x1="1130" y1="42" x2="1130" y2="240"/><text x="1130" y="34" text-anchor="middle">KM 42 · LAUNCH</text></g></g>
+        <g class="runner-g" opacity="0">
+          <circle class="runner-halo" r="14"/><circle class="runner" r="6.5"/>
+          <animateMotion dur="10s" begin="1.8s" repeatCount="indefinite" calcMode="linear"><mpath href="#profilePath"/></animateMotion>
+          <set attributeName="opacity" to="1" begin="1.8s"/>
+        </g>
       </svg>
     </div>
-    <a href="/" class="flex items-center border-r border-border px-5 py-3 text-sm font-semibold text-ink shrink-0">cjronxel</a>
-    <div class="relative hidden sm:flex flex-1 items-center justify-center gap-6 px-5 py-3 text-xs uppercase tracking-widest text-muted">
-      <span class="corner-mark corner-mark--tl" aria-hidden="true"></span>
-      <a href="#about-heading" class="transition-colors duration-150 hover:text-primary">About</a>
-      <a href="#experience-heading" class="transition-colors duration-150 hover:text-primary">Experience</a>
-      <a href="#stack-heading" class="transition-colors duration-150 hover:text-primary">Stack</a>
-      <a href="#projects-heading" class="transition-colors duration-150 hover:text-primary">Work</a>
-      <a href="#site-footer" class="transition-colors duration-150 hover:text-primary">Contact</a>
-    </div>
-    <div id="nav-clock" class="ml-auto flex items-center border-l border-border px-5 py-3 text-xs uppercase tracking-widest text-muted shrink-0">Davao, PH --:--:--</div>
-    <button id="theme-toggle" type="button" aria-label="Toggle color theme" class="w-14 flex items-center justify-center border-l border-border text-muted transition-colors duration-150 hover:text-primary shrink-0">
-      <svg class="theme-icon-sun w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path stroke-linecap="round" d="M12 2.5v2M12 19.5v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2.5 12h2M19.5 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="theme-icon-moon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.35 14.45a8.5 8.5 0 0 1-10.8-10.8 8.5 8.5 0 1 0 10.8 10.8Z"/></svg>
-    </button>
+    <div class="scroll-cue hero__fade" style="--d:2.2s"><span></span>Scroll to start the run</div>
   </div>
-</nav>
-
-<div class="max-w-[1180px] mx-auto px-8 sm:px-10 lg:px-15 pt-16 sm:pt-10 border-x border-border bg-bg">
-
-  <header class="relative -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 pt-16 pb-10 sm:pt-20 sm:pb-15 lg:pt-24 lg:pb-20 border-b border-border">
-    <span class="section-marker" aria-hidden="true"></span>
-
-    <p class="text-sm font-semibold uppercase tracking-widest text-muted">
-      <span class="text-[#e0a458]">Senior Laravel Engineer</span> <span class="text-muted">&middot;</span> <span class="text-[#6fae82]">Tech Lead</span> <span class="text-muted">&middot;</span> <span class="text-[#6f9ceb]">Technical Architect</span>
-    </p>
-
-    <h1 class="mt-3.5 text-[clamp(36px,6vw,84px)] font-semibold leading-[0.94] tracking-[-0.03em] text-ink is-visible">
-      I solve problems<br>and ship software.
-    </h1>
-
-    <p class="mt-4 text-[0.9375rem] text-muted max-w-md">
-      I solve complex problems and ship reliable software, with 10 years of experience building scalable backend systems, APIs, and full-stack applications that turn ideas into products people actually use.
-    </p>
-
-    <nav class="mt-6 flex items-center gap-3" aria-label="Contact">
-      <a class="opt__icon icon-github w-9 h-9 [--icon-color:#e7e5df]" href="https://github.com/ronssij" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-      </a>
-      <a class="opt__icon w-9 h-9 [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg>
-      </a>
-      <a class="opt__icon w-9 h-9 [--icon-color:#EA4AAA]" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener" aria-label="Sponsor">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.625 1.499c-2.32 0-4.354 1.203-5.625 3.03-1.271-1.827-3.305-3.03-5.625-3.03C3.129 1.499 0 4.253 0 8.249c0 4.275 3.068 7.847 5.828 10.227a33.14 33.14 0 0 0 5.616 3.876l.028.017.008.003-.001.003c.163.085.342.126.521.125.179.001.358-.041.521-.125l-.001-.003.008-.003.028-.017a33.14 33.14 0 0 0 5.616-3.876C20.932 16.096 24 12.524 24 8.249c0-3.996-3.129-6.75-6.375-6.75zm-.919 15.275a30.766 30.766 0 0 1-4.703 3.316l-.004-.002-.004.002a30.955 30.955 0 0 1-4.703-3.316c-2.677-2.307-5.047-5.298-5.047-8.523 0-2.754 2.121-4.5 4.125-4.5 2.06 0 3.914 1.479 4.544 3.684.143.495.596.797 1.086.796.49.001.943-.302 1.085-.796.63-2.205 2.484-3.684 4.544-3.684 2.004 0 4.125 1.746 4.125 4.5 0 3.225-2.37 6.216-5.048 8.523z"/></svg>
-      </a>
-      <a class="opt__icon w-9 h-9 [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
-      </a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="about-heading" class="relative scroll-mt-16 -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border min-h-[calc(100vh-4rem)] flex flex-col justify-center" aria-labelledby="about-heading-title">
-      <span class="section-marker" aria-hidden="true"></span>
-      <p class="eyebrow">// about</p>
-
-      <div class="mt-2 grid gap-10 sm:grid-cols-[1.1fr_1fr]">
-        <div>
-          <h2 id="about-heading-title" class="text-3xl sm:text-4xl font-bold leading-tight tracking-tight text-ink">
-            I'm <span class="text-[#e0a458]">CJ Ronxel</span>, a<br class="hidden sm:block"> problem-solver<br class="hidden sm:block"> based in Davao, PH.
-          </h2>
-
-          <p class="about mt-6">
-            I'm a <span class="font-semibold text-[#e0a458]">Senior Full-Stack Developer</span> with <span class="font-semibold text-[#6fae82]">10+ years of experience</span> building scalable web
-            applications and APIs. I specialize in PHP and Laravel, with strong experience in React,
-            Vue.js, and modern web technologies.
-          </p>
-          <p class="about mt-4">
-            I enjoy solving complex problems, designing scalable systems, refactoring legacy code, and
-            turning ideas into reliable production-ready products. Over the years, I've worked with
-            local and international teams, leading projects, mentoring developers, and contributing to
-            everything from MVPs to enterprise applications.
-          </p>
-
-          <nav class="mt-6 flex flex-col gap-2" aria-label="Contact">
-            <a class="opt w-full [--icon-color:#e7e5df]" href="https://github.com/ronssij" target="_blank" rel="noopener">
-              <span class="opt__icon icon-github"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg></span>
-              Follow on GitHub
-            </a>
-            <a class="opt w-full [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener">
-              <span class="opt__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg></span>
-              Follow on LinkedIn
-            </a>
-            <a class="opt w-full [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com">
-              <span class="opt__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></span>
-              ronssij@gmail.com
-            </a>
-          </nav>
-        </div>
-
-        <div class="bg-surface border border-border rounded-md w-full h-full min-h-[16rem]" aria-hidden="true"></div>
+</section><section id="work" class="section" data-gauge="Finished races">
+  <div class="wrap">
+    <div class="section__head">
+      <div data-reveal="rise">
+        <span class="km-marker">KM 05</span>
+        <h2 class="h-section">Finished races.</h2>
+        <p class="lede">Products I've taken from first commit to launch: marketplaces, health platforms, and App Store apps for founders and teams.</p>
       </div>
-    </section>
-
-    <section id="experience-heading" class="relative scroll-mt-16 -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border" aria-labelledby="experience-heading-title">
-      <span class="section-marker" aria-hidden="true"></span>
-
-      <div class="flex items-center gap-4">
-        <span id="experience-heading-title" class="text-xs uppercase tracking-widest text-muted shrink-0">Where I've Worked</span>
-        <span class="h-px flex-1 bg-border"></span>
-      </div>
-
-      <div class="mt-8">
-        <div class="space-y-8">
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/webee-labs.jpg" alt="Webee Labs" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="true">
-                  <svg class="w-4 h-4 rotate-180 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Nov 2025 – Mar 2026</span>
-                  <h3 class="font-semibold text-[#e0a458]">Technical Architect</h3>
-                  <span class="text-sm text-muted">Webee Labs · 4 mos</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc mt-2 ml-[66px] text-sm text-muted max-w-2xl">Leads architecture and development of a medicine prescription platform used across Europe; mentors backend engineers and drives Laravel modernization.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/appetiser-apps.jpg" alt="Appetiser Apps" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="true">
-                  <svg class="w-4 h-4 rotate-180 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Dec 2019 – Jul 2026</span>
-                  <h3 class="font-semibold text-[#6fae82]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">Appetiser Apps · 6 yrs</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc mt-2 ml-[66px] text-sm text-muted max-w-2xl">Built REST APIs and CMS tools for a female fitness app, contributed to a reusable Laravel boilerplate, and led multiple MVPs end-to-end.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="https://www.davidvenneit.com/dvit-icon.svg" alt="David Venne IT" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border bg-surface object-contain p-2 shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Jan 2021 – Apr 2021</span>
-                  <h3 class="font-semibold text-[#6f9ceb]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">David Venne IT · 3 mos</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Took full ownership of a Yelp-like location app, rebuilding the Laravel API and frontend from scratch with Vue.js and TypeScript.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/alpine-internet.png" alt="Alpine Internet Solutions" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover object-left shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">May 2019 – Feb 2020</span>
-                  <h3 class="font-semibold text-[#d98cc0]">Web Developer</h3>
-                  <span class="text-sm text-muted">Alpine Internet Solutions · 9 mos</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Maintained WordPress client sites and provided back-office support across their customer base.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/peoplewave.jpg" alt="Peoplewave" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Feb 2018 – Apr 2019</span>
-                  <h3 class="font-semibold text-[#5fb8b0]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">Peoplewave · 1 yr</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Built backend APIs and frontend features for an HR performance-management platform with Laravel and Vue.js.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/21pos.jpg" alt="21POS" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Nov 2016 – Nov 2017</span>
-                  <h3 class="font-semibold text-[#a48ce0]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">21POS · 1 yr</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Developed ERP modules for ordering, production, inventory, and purchase orders for a retail clothing company.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/jbtech.jpg" alt="JBTech Marketing" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border object-cover shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Jul 2016 – Nov 2016</span>
-                  <h3 class="font-semibold text-[#d9776f]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">JBTech Marketing · 4 mos</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Built and maintained web applications with PHP, Laravel, and WordPress across multiple client projects.</p>
-          </div>
-
-          <div class="timeline-item relative">
-            <span class="absolute left-[25px] top-[50px] bottom-[-32px] w-px bg-border" aria-hidden="true"></span>
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/bureau-of-customs.svg" alt="Bureau of Customs" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border bg-surface object-contain p-2 shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Sept 2017 – Mar 2026</span>
-                  <h3 class="font-semibold text-[#6fc4d9]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">Bureau of Customs · 8 yrs</span>
-                  <span class="tag tag--amber">project-based</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Developed an internal inventory and procurement tracking system with Laravel and Vue.js, working closely with the IT department.</p>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-row flex items-center gap-4 cursor-pointer">
-              <img src="assets/logos/hyvhr.svg" alt="HYVHR" width="50" height="50" class="w-[50px] h-[50px] rounded-md border border-border bg-surface object-contain p-2 shrink-0">
-              <div class="relative flex-1 pr-10">
-                <button type="button" class="timeline-toggle absolute right-0 top-1 text-muted transition-colors duration-150 hover:text-primary" aria-expanded="false">
-                  <svg class="w-4 h-4 transition-transform duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-                </button>
-                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span class="tag">Sept 2017 – Mar 2026</span>
-                  <h3 class="font-semibold text-[#d9c96f]">Full Stack Web Developer</h3>
-                  <span class="text-sm text-muted">HYVHR · 8 yrs</span>
-                  <span class="tag tag--amber">project-based</span>
-                </div>
-              </div>
-            </div>
-            <p class="timeline-desc hidden mt-2 ml-[66px] text-sm text-muted max-w-2xl">Built an HR scheduling app to track remote and office staff, helping admins manage the shift to hybrid work during the pandemic.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="stack-heading" class="relative scroll-mt-16 -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border" aria-labelledby="stack-heading-title">
-      <span class="section-marker" aria-hidden="true"></span>
-      <p class="eyebrow">// stack</p>
-      <h2 id="stack-heading-title" class="section__heading">installed</h2>
-
-      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 border-t border-l border-border">
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">PHP</span>
-          <img src="https://cdn.simpleicons.org/php/777BB4" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">10 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Laravel</span>
-          <img src="https://cdn.simpleicons.org/laravel/FF2D20" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">8 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">MySQL</span>
-          <img src="https://cdn.simpleicons.org/mysql/4479A1" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">9 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">PostgreSQL</span>
-          <img src="https://cdn.simpleicons.org/postgresql/4169E1" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">5 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Redis</span>
-          <img src="https://cdn.simpleicons.org/redis/FF4438" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">5 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Vue.js</span>
-          <img src="https://cdn.simpleicons.org/vuedotjs/4FC08D" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">6 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Nuxt.js</span>
-          <img src="https://cdn.simpleicons.org/nuxt/00DC82" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">3 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">React</span>
-          <img src="https://cdn.simpleicons.org/react/61DAFB" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">4 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Next.js</span>
-          <img src="https://cdn.simpleicons.org/nextdotjs/FFFFFF" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">2 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">TypeScript</span>
-          <img src="https://cdn.simpleicons.org/typescript/3178C6" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">4 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Tailwind CSS</span>
-          <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">4 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Docker</span>
-          <img src="https://cdn.simpleicons.org/docker/2496ED" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">6 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Git</span>
-          <img src="https://cdn.simpleicons.org/git/F05032" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">10 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">GitHub</span>
-          <img src="https://cdn.simpleicons.org/github/FFFFFF" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">10 yrs</span>
-        </div>
-        <div class="border-r border-b border-border p-4 flex flex-col justify-between min-h-[7.5rem]">
-          <span class="text-xs text-muted">Postman</span>
-          <img src="https://cdn.simpleicons.org/postman/FF6C37" width="32" height="32" alt="" aria-hidden="true" class="self-center">
-          <span class="self-end text-xs text-muted">8 yrs</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects-heading" class="relative scroll-mt-16 -mx-8 px-8 sm:-mx-10 sm:px-10 lg:-mx-15 lg:px-15 py-10 sm:py-15 lg:py-20 border-b border-border min-h-[calc(100vh-4rem)] flex flex-col justify-center" aria-labelledby="projects-heading-title">
-      <p class="eyebrow">// projects</p>
-      <h2 id="projects-heading-title" class="section__heading">
-        Featured Projects
-      </h2>
-
-      <div class="mt-6 border-t border-border">
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6b31]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#ff6b31] shrink-0">GY</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">Gymed</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform for exercise physiologists, physiotherapists, and allied health professionals to plan, deliver, and track client exercise programs.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#ff6b31] transition-colors duration-150 hover:text-primary" href="https://gymed.com.au" target="_blank" rel="noopener">gymed.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#ff6a2c]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#ff6a2c] shrink-0">TK</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">TUKS</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform that connects tradespeople with job opportunities and enables hiring of workers through a unified digital marketplace.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#ff6a2c] transition-colors duration-150 hover:text-primary" href="https://www.tuks.com.au" target="_blank" rel="noopener">tuks.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#1e3957]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#1e3957] shrink-0">LH</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">The Lawyers Hub</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">A platform connecting users with verified, upfront lawyers across various practice areas through an easy search and matching system.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#1e3957] transition-colors duration-150 hover:text-primary" href="https://www.thelawyershub.com" target="_blank" rel="noopener">thelawyershub.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#178F8A]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#178F8A] shrink-0">DW</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">My Day My Way</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">A secure communication platform enabling families, carers, educators, and health professionals to share real-time updates and coordinate care.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">FilamentPHP</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#178F8A] transition-colors duration-150 hover:text-primary" href="https://mydaymyway.com" target="_blank" rel="noopener">mydaymyway.com<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/my-day-my-way/id6747789571" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6 border-b border-border">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#0085AA]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#0085AA] shrink-0">AL</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">Afterlife</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">A digital legacy management platform that lets users organize and preserve final wishes, important documents, memories, and personal letters to share with loved ones after they pass away.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#0085AA] transition-colors duration-150 hover:text-primary" href="https://afterlifeapp.net" target="_blank" rel="noopener">afterlifeapp.net<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative pl-4 py-6">
-          <span class="absolute left-0 top-0 bottom-0 w-1 bg-[#B8BA9E]" aria-hidden="true"></span>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-md border border-border bg-surface flex items-center justify-center text-xs font-semibold text-[#B8BA9E] shrink-0">MW</div>
-            <div class="flex-1 min-w-0 flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
-              <div class="min-w-0">
-                <h3 class="text-lg font-bold text-ink">Move With Us</h3>
-                <p class="mt-2 text-sm text-muted max-w-xl">An online fitness app offering customizable workout programs, nutrition guidance, and progress tracking tools designed for women's health and fitness goals.</p>
-                <div class="mt-3 flex flex-wrap gap-2">
-                  <span class="tag">Laravel</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">Vue.js</span>
-                  <span class="tag">MySQL</span>
-                </div>
-              </div>
-              <div class="flex flex-col items-start sm:items-end gap-1.5 mt-3 sm:mt-0 text-xs uppercase tracking-widest text-muted shrink-0">
-                <a class="inline-flex items-center gap-1 whitespace-nowrap text-[#B8BA9E] transition-colors duration-150 hover:text-primary" href="http://movewithus.com.au" target="_blank" rel="noopener">movewithus.com.au<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://apps.apple.com/au/app/move-with-us/id1523442465" target="_blank" rel="noopener">App Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-                <a class="inline-flex items-center gap-1 whitespace-nowrap transition-colors duration-150 hover:text-primary" href="https://play.google.com/store/apps/details?id=com.appetiser.bbr.bodiesbyrachel&hl=en" target="_blank" rel="noopener">Play Store<svg class="w-2.5 h-2.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a href="/projects" class="mt-6 self-start text-sm font-semibold text-primary hover:underline">View all projects &rarr;</a>
-    </section>
-
-  </main>
-
-  <footer id="site-footer" class="scroll-mt-6">
-    <div class="terminal-dark -mx-8 sm:-mx-10 lg:-mx-15 border border-border bg-surface overflow-hidden">
-      <div class="flex items-center gap-1.5 border-b border-border bg-bg px-4 py-2.5">
-        <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" aria-hidden="true"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" aria-hidden="true"></span>
-        <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]" aria-hidden="true"></span>
-        <span class="ml-2 text-xs text-muted">contact.sh</span>
-      </div>
-
-      <div class="p-5">
-        <p class="prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> whoami</p>
-
-        <nav class="mt-4 flex flex-col gap-2" aria-label="Contact">
-          <a class="opt text-[#8b94a0] [--icon-color:#8b94a0]" href="https://github.com/ronssij" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.09 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.19 1.83 1.19 3.09 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12c0-6.27-5.23-11.5-11.5-11.5Z"/></svg>
-            --github
-          </a>
-          <a class="opt text-[#0A66C2] [--icon-color:#0A66C2]" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg>
-            --linkedin
-          </a>
-          <a class="opt text-[#EA4AAA] [--icon-color:#EA4AAA]" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
-            --sponsor
-          </a>
-          <a class="opt text-[#EA4335] [--icon-color:#EA4335]" href="mailto:ronssij@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-            --email
-          </a>
-        </nav>
-
-        <p class="mt-4 prompt"><span class="prompt__user">ronssij</span><span class="text-muted">@</span><span class="prompt__host">github</span> <span class="text-muted">~</span> <span class="prompt__sigil">%</span> <span class="cursor" aria-hidden="true"></span></p>
-      </div>
-
-      <div class="border-t border-border px-5 py-4 flex flex-wrap items-center justify-between gap-2 text-xs text-muted">
-        <span>&copy; 2026 CJ Ronxel Cabug-os</span>
-        <span>Davao City, Philippines</span>
+      <a href="/projects" class="btn btn--ghost" data-reveal="rise">See every finished race <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div>
+    <div class="bibs">
+      <article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql filamentphp" style="--brand:#d4501a;--i:0;--tilt:-2deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">01</span></div>
+  <h3 class="bib__name">Gymed</h3>
+  <p class="bib__desc">A platform for exercise physiologists, physiotherapists, and allied health professionals to plan, deliver, and track client exercise programs.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="bib__links"><a href="https://gymed.com.au" target="_blank" rel="noopener">gymed.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article><article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql filamentphp" style="--brand:#cf4c16;--i:1;--tilt:1.5deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">02</span></div>
+  <h3 class="bib__name">TUKS</h3>
+  <p class="bib__desc">A platform that connects tradespeople with job opportunities and enables hiring of workers through a unified digital marketplace.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="bib__links"><a href="https://www.tuks.com.au" target="_blank" rel="noopener">tuks.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article><article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql filamentphp" style="--brand:#1e3957;--i:2;--tilt:2deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">04</span></div>
+  <h3 class="bib__name">The Lawyers Hub</h3>
+  <p class="bib__desc">A platform connecting users with verified, upfront lawyers across various practice areas through an easy search and matching system.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="bib__links"><a href="https://www.thelawyershub.com" target="_blank" rel="noopener">thelawyershub.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article><article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql filamentphp mobile" style="--brand:#178F8A;--i:0;--tilt:-1.5deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">05</span></div>
+  <h3 class="bib__name">My Day My Way</h3>
+  <p class="bib__desc">A secure communication platform enabling families, carers, educators, and health professionals to share real-time updates and coordinate care.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">FilamentPHP</span></div>
+  <div class="bib__links"><a href="https://mydaymyway.com" target="_blank" rel="noopener">mydaymyway.com<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/my-day-my-way/id6747789571" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article><article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql" style="--brand:#0085AA;--i:1;--tilt:-1deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">09</span></div>
+  <h3 class="bib__name">Afterlife</h3>
+  <p class="bib__desc">A digital legacy management platform that lets users organize and preserve final wishes, important documents, memories, and personal letters to share with loved ones after they pass away.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="bib__links"><a href="https://afterlifeapp.net" target="_blank" rel="noopener">afterlifeapp.net<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article><article class="bib" data-reveal="rise-tilt" data-tilt data-tags="laravel php vuejs mysql mobile" style="--brand:#6b6d52;--i:2;--tilt:1deg">
+  <span class="bib__strip"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span><span class="bib__pin"></span>
+  <div class="bib__top"><span class="stamp">FINISHED ✓</span><span class="bib__no">12</span></div>
+  <h3 class="bib__name">Move With Us</h3>
+  <p class="bib__desc">An online fitness app offering customizable workout programs, nutrition guidance, and progress tracking tools designed for women&#x27;s health and fitness goals.</p>
+  <div class="bib__tags"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">Vue.js</span><span class="tag">MySQL</span></div>
+  <div class="bib__links"><a href="http://movewithus.com.au" target="_blank" rel="noopener">movewithus.com.au<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://apps.apple.com/au/app/move-with-us/id1523442465" target="_blank" rel="noopener">App Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a><a href="https://play.google.com/store/apps/details?id=com.appetiser.bbr.bodiesbyrachel&amp;hl=en" target="_blank" rel="noopener">Play Store<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+</article>
+    </div>
+  </div>
+</section><section id="process" class="section" data-gauge="The route">
+  <div class="wrap">
+    <div class="section__head" data-reveal="rise">
+      <div>
+        <span class="km-marker">KM 12</span>
+        <h2 class="h-section">How I'd build your MVP.</h2>
+        <p class="lede">Every launch is a long run. Here's the route: pace it right, refuel at the right moments, and finish strong.</p>
       </div>
     </div>
-  </footer>
-
-</div>
-
-<script>
-  (function () {
-    var el = document.getElementById('nav-clock');
-    if (!el) return;
-    var fmt = new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Asia/Manila',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
-      hour12: false
-    });
-    function tick() {
-      el.textContent = 'Davao, PH ' + fmt.format(new Date());
-    }
-    tick();
-    setInterval(tick, 1000);
-  })();
-</script>
-
-<script>
-  (function () {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      if (isLight) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-      }
-    });
-  })();
-</script>
-
-<script>
-  (function () {
-    document.querySelectorAll('.timeline-row').forEach(function (row) {
-      var item = row.closest('.timeline-item');
-      var btn = row.querySelector('.timeline-toggle');
-      var desc = item ? item.querySelector('.timeline-desc') : null;
-      if (!btn) return;
-      row.addEventListener('click', function () {
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        if (desc) desc.classList.toggle('hidden', expanded);
-        btn.setAttribute('aria-expanded', String(!expanded));
-        btn.querySelector('svg').classList.toggle('rotate-180', !expanded);
-      });
-    });
-  })();
-</script>
-
+    <div class="trail" id="trail">
+      <svg class="trail__svg" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+        <path class="trail__path" d="M10 70 C150 70 180 330 330 320 S520 150 620 180 S800 40 990 30"/>
+        <path class="trail__draw" pathLength="1" d="M10 70 C150 70 180 330 330 320 S520 150 620 180 S800 40 990 30"/>
+      </svg>
+      <div class="stations"><div class="station" data-reveal="rise" data-station="0" style="--i:0">
+  <div class="station__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M5 21V4"/><path pathLength="1" d="M5 4h11l-2 4 2 4H5"/></svg></div>
+  <p class="station__km">KM 0 · Start line</p><h3 class="station__title">Scope the race.</h3><p class="station__body">We talk through your idea, your users and the must-haves, then cut it down to the smallest version worth launching.</p><p class="station__out">→ one-page scope & estimate</p>
+</div><div class="station" data-reveal="rise" data-station="1" style="--i:1">
+  <div class="station__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path pathLength="1" d="M9 4v14M15 6v14"/></svg></div>
+  <p class="station__km">KM 10 · Aid station</p><h3 class="station__title">Draw the map.</h3><p class="station__body">Architecture, data model and key screens planned up front, so the build is fast and surprises stay rare.</p><p class="station__out">→ technical blueprint</p>
+</div><div class="station" data-reveal="rise" data-station="2" style="--i:2">
+  <div class="station__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M2 20l7-12 4 6 3-4 6 10z"/><path pathLength="1" d="M7.5 11l1.5 1 1.5-1"/></svg></div>
+  <p class="station__km">KM 30 · The climb</p><h3 class="station__title">Build the thing.</h3><p class="station__body">Laravel APIs, Vue or React front ends, Filament admin panels. Regular demos so you always see real progress.</p><p class="station__out">→ working product, demo by demo</p>
+</div><div class="station" data-reveal="rise" data-station="3" style="--i:3">
+  <div class="station__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M8 4h8v5a4 4 0 0 1-8 0z"/><path pathLength="1" d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path pathLength="1" d="M12 13v4M8 21h8M9 17h6"/></svg></div>
+  <p class="station__km">KM 42.2 · Finish line</p><h3 class="station__title">Launch & keep running.</h3><p class="station__body">Deploy to production, ship to the App Store and Play Store, then iterate on what real users tell us.</p><p class="station__out">→ live MVP in users' hands</p>
+</div></div>
+    </div>
+  </div>
+</section><section id="about" class="section" data-gauge="Runner's log">
+  <div class="wrap">
+    <div class="section__head" data-reveal="rise"><div><span class="km-marker">KM 21</span><h2 class="h-section">Runner's log.</h2></div></div>
+    <div class="log">
+      <div class="log__text" data-reveal="left">
+        <p>I'm <strong>CJ Ronxel</strong>, a problem-solver based in Davao, PH, and a Senior Full-Stack Developer with 10+ years of experience building scalable web applications and APIs.</p>
+        <p>I specialize in <strong>PHP and Laravel</strong>, with strong experience in React, Vue.js, and modern web technologies.</p>
+        <p>I enjoy solving complex problems, designing scalable systems, refactoring legacy code, and turning ideas into reliable production-ready products. I've worked with local and international teams, leading projects, mentoring developers, and contributing to everything from MVPs to enterprise applications.</p>
+        <div class="socials">
+          <a class="btn btn--ghost" href="https://github.com/ronssij" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></span>Follow on GitHub</a>
+          <a class="btn btn--ghost" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg></span>Follow on LinkedIn</a>
+        </div>
+      </div>
+      <div data-reveal="right">
+        <figure class="polaroid" data-tilt>
+          <span class="polaroid__tape" aria-hidden="true"></span>
+          <img src="assets/me.jpg" alt="Portrait of CJ Ronxel Cabug-os, smiling, in a black t-shirt" width="552" height="828" loading="lazy">
+          <span class="polaroid__bib" aria-hidden="true"><small>DVO</small>042</span>
+          <figcaption>CJ · race day, every day</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section><section id="running" class="offkb" data-gauge="Off the keyboard">
+  <div class="wrap offkb__inner">
+    <div data-reveal="left">
+      <span class="km-marker">KM 25 · Off the keyboard</span>
+      <h2 class="h-section">Road. Trail.<br><em>Repeat.</em></h2>
+      <p class="lede">When I'm not shipping, I'm out logging kilometers on road and trail. Same mindset either way: steady pace, long game, finish what you start.</p>
+      <p class="offkb__note">That's how I build products too. No sprint-and-crash, just steady progress you can see until it's live.</p>
+    </div>
+    <div class="watch" data-reveal="right">
+      <div class="watch__head"><span class="avail__dot" aria-hidden="true"></span><span>Career summary</span><span class="ml-auto opacity-80">Activity · Dev</span></div>
+      <div class="watch__grid"><div class="watch__stat" data-reveal="rise" style="--i:0"><span class="watch__l">Years</span><span class="watch__n" data-count="10" data-suffix="+">10+</span><span class="watch__u">on the road</span></div><div class="watch__stat" data-reveal="rise" style="--i:1"><span class="watch__l">Products</span><span class="watch__n" data-count="12" data-suffix="">12</span><span class="watch__u">shipped</span></div><div class="watch__stat" data-reveal="rise" style="--i:2"><span class="watch__l">Teams</span><span class="watch__n" data-count="9" data-suffix="">9</span><span class="watch__u">run with</span></div></div>
+      <svg class="watch__chart" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 52 C30 50 40 40 60 42 S90 30 110 34 S140 18 160 24 S200 30 220 14 S260 8 300 4"/></svg>
+      <p class="watch__foot"><span>2016</span><span>Pace: steady</span><span>Today</span></p>
+    </div>
+  </div>
+</section><section id="experience" class="section" data-gauge="Race history">
+  <div class="wrap">
+    <div class="section__head" data-reveal="rise"><div><span class="km-marker">KM 28</span><h2 class="h-section">Race history.</h2><p class="lede">Every team I've run with, and the splits along the way.</p></div></div>
+    <div class="splits"><details class="split" open data-reveal="left" style="--i:0">
+  <summary>
+    <img src="assets/logos/webee-labs.jpg" alt="Webee Labs" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Technical Architect</span><span class="split__co">Webee Labs · 4 mos</span></span>
+    <span class="split__date">Nov 2025 – Mar 2026</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Nov 2025 – Mar 2026</span>Leads architecture and development of a medicine prescription platform used across Europe; mentors backend engineers and drives Laravel modernization.</p>
+</details><details class="split" open data-reveal="right" style="--i:1">
+  <summary>
+    <img src="assets/logos/appetiser-apps.jpg" alt="Appetiser Apps" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer</span><span class="split__co">Appetiser Apps · 6 yrs</span></span>
+    <span class="split__date">Dec 2019 – Jul 2026</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Dec 2019 – Jul 2026</span>Built REST APIs and CMS tools for a female fitness app, contributed to a reusable Laravel boilerplate, and led multiple MVPs end-to-end.</p>
+</details><details class="split" open data-reveal="left" style="--i:2">
+  <summary>
+    <img src="https://www.davidvenneit.com/dvit-icon.svg" alt="David Venne IT" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer</span><span class="split__co">David Venne IT · 3 mos</span></span>
+    <span class="split__date">Jan 2021 – Apr 2021</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Jan 2021 – Apr 2021</span>Took full ownership of a Yelp-like location app, rebuilding the Laravel API and frontend from scratch with Vue.js and TypeScript.</p>
+</details><details class="split" open data-reveal="right" style="--i:0">
+  <summary>
+    <img src="assets/logos/alpine-internet.png" alt="Alpine Internet Solutions" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Web Developer</span><span class="split__co">Alpine Internet Solutions · 9 mos</span></span>
+    <span class="split__date">May 2019 – Feb 2020</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">May 2019 – Feb 2020</span>Maintained WordPress client sites and provided back-office support across their customer base.</p>
+</details><details class="split" open data-reveal="left" style="--i:1">
+  <summary>
+    <img src="assets/logos/peoplewave.jpg" alt="Peoplewave" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer</span><span class="split__co">Peoplewave · 1 yr</span></span>
+    <span class="split__date">Feb 2018 – Apr 2019</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Feb 2018 – Apr 2019</span>Built backend APIs and frontend features for an HR performance-management platform with Laravel and Vue.js.</p>
+</details><details class="split" open data-reveal="right" style="--i:2">
+  <summary>
+    <img src="assets/logos/21pos.jpg" alt="21POS" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer</span><span class="split__co">21POS · 1 yr</span></span>
+    <span class="split__date">Nov 2016 – Nov 2017</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Nov 2016 – Nov 2017</span>Developed ERP modules for ordering, production, inventory, and purchase orders for a retail clothing company.</p>
+</details><details class="split" open data-reveal="left" style="--i:0">
+  <summary>
+    <img src="assets/logos/jbtech.jpg" alt="JBTech Marketing" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer</span><span class="split__co">JBTech Marketing · 4 mos</span></span>
+    <span class="split__date">Jul 2016 – Nov 2016</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Jul 2016 – Nov 2016</span>Built and maintained web applications with PHP, Laravel, and WordPress across multiple client projects.</p>
+</details><details class="split" open data-reveal="right" style="--i:1">
+  <summary>
+    <img src="assets/logos/bureau-of-customs.svg" alt="Bureau of Customs" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer<span class="chip-pb">project-based</span></span><span class="split__co">Bureau of Customs · 8 yrs</span></span>
+    <span class="split__date">Sept 2017 – Mar 2026</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Sept 2017 – Mar 2026</span>Developed an internal inventory and procurement tracking system with Laravel and Vue.js, working closely with the IT department.</p>
+</details><details class="split" open data-reveal="left" style="--i:2">
+  <summary>
+    <img src="assets/logos/hyvhr.svg" alt="HYVHR" width="56" height="56" loading="lazy">
+    <span><span class="split__role">Full Stack Web Developer<span class="chip-pb">project-based</span></span><span class="split__co">HYVHR · 8 yrs</span></span>
+    <span class="split__date">Sept 2017 – Mar 2026</span>
+    <span class="split__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></span>
+  </summary>
+  <p class="split__desc"><span class="mono">Sept 2017 – Mar 2026</span>Built an HR scheduling app to track remote and office staff, helping admins manage the shift to hybrid work during the pandemic.</p>
+</details></div>
+  </div>
+</section><section id="kit" class="section" data-gauge="Kit list">
+  <div class="wrap">
+    <div class="section__head" data-reveal="rise"><div><span class="km-marker">KM 35</span><h2 class="h-section">Kit list.</h2><p class="lede">What I pack for every build. Splits show how many years I've logged with each.</p></div>
+      <p class="kit-legend" aria-hidden="true"><span class="kit-legend__bar"></span> full bar = 10 years</p></div>
+    <div class="packs"><article class="pack" data-reveal="rise" data-tilt="soft" style="--i:0">
+  <header class="pack__head">
+    <span class="pack__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15c0-2 1.5-3 3-3.4l3.5-1 2-3.4c.4-.7 1.1-.7 1.5 0l1 2c1.5.4 3 .4 4 1.4 1.8 1.4 3 2 3 4.4v1.5c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1z"/><path d="M3 18.5h18"/><path d="M9.5 10.6l1.2 1.2M11.3 9.4l1.2 1.2"/></svg></span>
+    <div><p class="pack__kind">Trail shoes</p><h3 class="pack__title">Backend</h3></div>
+    <span class="pack__count">5 items</span>
+  </header>
+  <p class="pack__blurb">The core. Everything rests on it.</p>
+  <div class="splits-head" aria-hidden="true"><span>#</span><span>Tool</span><span></span><span>Yrs</span></div>
+  <ul class="pack__list"><li class="gear" style="--r:0;--y:10"><span class="gear__no">1</span><span class="gear__name">PHP</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">10</span></li><li class="gear" style="--r:1;--y:8"><span class="gear__no">2</span><span class="gear__name">Laravel</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">8</span></li><li class="gear" style="--r:2;--y:9"><span class="gear__no">3</span><span class="gear__name">MySQL</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">9</span></li><li class="gear" style="--r:3;--y:5"><span class="gear__no">4</span><span class="gear__name">PostgreSQL</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">5</span></li><li class="gear" style="--r:4;--y:5"><span class="gear__no">5</span><span class="gear__name">Redis</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">5</span></li></ul>
+  <p class="pack__foot"><span>Most worn</span><b>PHP · 10 yrs</b></p>
+</article><article class="pack" data-reveal="rise" data-tilt="soft" style="--i:1">
+  <header class="pack__head">
+    <span class="pack__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3c0 3 1.5 5 4 5s4-2 4-5"/><path d="M8 3 5 6v14h5V12M16 3l3 3v14h-5V12"/><path d="M6.5 14h2M15.5 14h2"/></svg></span>
+    <div><p class="pack__kind">Race vest</p><h3 class="pack__title">Frontend</h3></div>
+    <span class="pack__count">6 items</span>
+  </header>
+  <p class="pack__blurb">What users actually touch.</p>
+  <div class="splits-head" aria-hidden="true"><span>#</span><span>Tool</span><span></span><span>Yrs</span></div>
+  <ul class="pack__list"><li class="gear" style="--r:0;--y:6"><span class="gear__no">1</span><span class="gear__name">Vue.js</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">6</span></li><li class="gear" style="--r:1;--y:3"><span class="gear__no">2</span><span class="gear__name">Nuxt.js</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">3</span></li><li class="gear" style="--r:2;--y:4"><span class="gear__no">3</span><span class="gear__name">React</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">4</span></li><li class="gear" style="--r:3;--y:2"><span class="gear__no">4</span><span class="gear__name">Next.js</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">2</span></li><li class="gear" style="--r:4;--y:4"><span class="gear__no">5</span><span class="gear__name">TypeScript</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">4</span></li><li class="gear" style="--r:5;--y:4"><span class="gear__no">6</span><span class="gear__name">Tailwind CSS</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">4</span></li></ul>
+  <p class="pack__foot"><span>Most worn</span><b>Vue.js · 6 yrs</b></p>
+</article><article class="pack" data-reveal="rise" data-tilt="soft" style="--i:2">
+  <header class="pack__head">
+    <span class="pack__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="3"/><path d="M9 6V2h6v4M9 18v4h6v-4"/><path d="M12 9v3l2 1.5"/></svg></span>
+    <div><p class="pack__kind">GPS watch</p><h3 class="pack__title">Tooling</h3></div>
+    <span class="pack__count">4 items</span>
+  </header>
+  <p class="pack__blurb">Keeps every build on course.</p>
+  <div class="splits-head" aria-hidden="true"><span>#</span><span>Tool</span><span></span><span>Yrs</span></div>
+  <ul class="pack__list"><li class="gear" style="--r:0;--y:6"><span class="gear__no">1</span><span class="gear__name">Docker</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">6</span></li><li class="gear" style="--r:1;--y:10"><span class="gear__no">2</span><span class="gear__name">Git</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">10</span></li><li class="gear" style="--r:2;--y:10"><span class="gear__no">3</span><span class="gear__name">GitHub</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">10</span></li><li class="gear" style="--r:3;--y:8"><span class="gear__no">4</span><span class="gear__name">Postman</span><span class="gear__bar" aria-hidden="true"><i></i></span><span class="gear__yrs">8</span></li></ul>
+  <p class="pack__foot"><span>Most worn</span><b>Git · 10 yrs</b></p>
+</article></div>
+  </div>
+</section><section id="contact" class="section pt-0" data-gauge="Finish">
+  <div class="wrap">
+    <div class="finish" id="finish" data-reveal="pop">
+      <svg class="topo" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="topo__drift"><g data-depth="18"><path class="contour" pathLength="1" style="--i:1" d="M974 260C975 262 973 264 971 266C970 268 969 269 968 271C967 273 966 275 964 276C963 278 960 279 958 280C956 280 953 281 950 281C948 282 946 283 944 283C942 284 939 285 937 285C935 284 932 283 930 282C928 282 926 280 924 280C922 280 920 282 917 282C914 283 909 285 906 285C902 286 899 285 896 284C894 282 893 280 892 278C892 276 891 273 891 271C892 269 892 267 893 265C893 263 896 262 897 260C898 258 900 257 900 256C901 254 899 253 899 251C899 249 898 247 898 245C899 244 901 242 903 241C905 240 908 240 910 239C912 238 914 237 915 235C917 234 919 231 921 230C924 229 927 228 930 228C933 228 936 229 938 231C941 232 943 233 945 234C947 236 949 237 950 239C951 241 951 243 951 245C952 247 951 248 953 249C954 250 957 250 960 251C963 252 968 253 970 254C973 256 974 258 974 260Z"/><path class="contour" pathLength="1" style="--i:2" d="M1019 260C1019 264 1015 268 1013 272C1011 275 1008 279 1006 282C1003 285 1002 289 999 292C995 295 991 297 986 299C981 301 976 302 971 303C966 304 962 306 958 307C953 308 949 310 944 309C939 309 934 306 930 305C926 304 923 301 918 301C914 301 910 303 903 305C897 307 888 310 882 311C875 311 867 310 863 307C858 304 856 299 855 295C853 291 853 286 853 282C853 278 853 274 855 270C857 267 861 263 864 260C866 257 870 255 871 252C871 249 869 246 868 242C868 239 865 234 867 230C868 227 872 224 876 222C880 220 886 220 890 218C894 216 897 214 901 211C905 208 908 203 913 200C918 198 924 196 930 196C936 196 942 199 947 201C952 203 957 206 960 209C964 212 968 215 970 218C972 222 972 227 973 230C974 234 973 237 976 239C978 241 985 241 990 242C996 244 1006 246 1011 249C1016 252 1019 256 1019 260Z"/><path class="contour" pathLength="1" style="--i:3" d="M1063 260C1064 266 1058 272 1054 277C1051 283 1047 288 1044 293C1040 298 1038 304 1033 308C1028 313 1021 316 1014 319C1007 321 998 322 991 324C984 326 978 329 972 330C965 332 958 334 951 334C944 333 936 330 930 327C924 325 919 321 913 321C906 321 899 325 890 327C881 330 868 336 857 336C847 337 836 334 829 331C823 327 820 319 817 313C815 307 814 300 814 293C815 287 815 281 818 276C820 270 827 265 830 260C834 255 840 252 841 248C842 243 838 239 838 233C837 228 833 221 835 216C837 211 843 207 849 204C855 201 864 200 870 197C876 195 881 191 886 186C892 182 897 174 904 170C912 167 922 164 930 164C938 165 948 168 955 172C963 175 970 179 976 183C981 187 987 192 990 197C993 203 992 210 994 215C995 220 994 225 998 228C1003 231 1012 231 1021 234C1030 236 1044 239 1051 243C1059 247 1063 254 1063 260Z"/><path class="contour" pathLength="1" style="--i:4" d="M1108 260C1108 268 1100 276 1096 283C1091 290 1086 297 1082 304C1077 311 1074 319 1068 324C1061 330 1051 335 1042 338C1033 342 1021 343 1012 346C1002 348 994 352 986 354C977 356 967 359 958 358C949 358 939 353 930 350C921 347 916 341 907 341C898 341 889 346 877 350C865 353 847 361 833 361C820 362 805 359 796 354C787 349 783 339 780 330C776 322 776 313 776 305C776 296 777 288 780 281C784 273 792 266 797 260C802 254 809 249 811 243C813 237 808 231 807 224C805 217 801 207 803 201C806 194 815 189 822 185C830 181 842 181 850 177C859 173 864 167 872 161C879 155 886 145 896 140C906 135 919 132 930 133C941 133 953 138 963 142C974 146 983 152 991 157C998 163 1006 169 1010 177C1014 184 1013 194 1015 200C1017 207 1015 213 1021 217C1027 222 1039 222 1051 225C1063 228 1083 232 1092 237C1101 243 1107 252 1108 260Z"/><path class="contour" pathLength="1" style="--i:5" d="M1152 260C1153 270 1143 280 1137 289C1132 298 1125 306 1119 315C1114 324 1110 333 1102 340C1094 348 1082 354 1070 358C1058 362 1044 364 1032 367C1020 370 1011 375 999 377C988 380 977 384 965 383C953 382 941 376 930 372C919 369 912 362 901 362C890 362 879 368 864 372C848 376 826 386 809 387C792 388 773 384 762 378C751 371 746 358 742 348C738 338 737 326 737 316C738 306 739 295 743 286C747 277 758 268 764 260C770 252 779 247 781 239C783 232 777 224 776 215C774 206 768 194 772 186C775 178 786 171 796 166C805 161 820 161 831 156C841 151 848 144 857 137C867 129 875 116 887 110C900 104 916 100 930 101C944 101 959 107 972 113C985 118 996 124 1006 132C1016 139 1025 147 1030 156C1035 165 1034 177 1036 185C1039 194 1036 202 1044 207C1051 212 1066 212 1081 216C1096 220 1121 225 1132 232C1144 239 1151 250 1152 260Z"/><path class="contour" pathLength="1" style="--i:6" d="M1196 260C1197 271 1185 284 1179 295C1172 306 1164 316 1157 326C1150 336 1146 348 1136 357C1126 365 1112 372 1098 378C1084 383 1067 385 1053 388C1038 392 1027 398 1013 401C1000 404 986 409 972 408C958 407 943 399 930 395C917 391 909 382 895 382C882 382 869 389 850 395C832 400 805 411 785 412C764 413 742 409 728 401C715 393 709 378 705 365C700 353 699 339 699 327C699 315 700 302 706 291C711 280 723 269 731 260C738 251 749 244 752 235C754 226 747 217 745 206C743 196 736 181 740 171C744 161 757 153 769 147C780 141 798 141 811 135C823 129 831 121 843 112C854 103 864 88 879 80C894 73 913 68 930 69C947 69 965 77 980 83C995 89 1010 97 1021 106C1033 115 1043 124 1050 135C1056 146 1055 160 1058 171C1061 181 1058 190 1067 196C1075 202 1094 202 1111 207C1129 212 1159 217 1173 226C1187 235 1196 249 1196 260Z"/><path class="contour" pathLength="1" style="--i:7" d="M1241 260C1242 273 1228 288 1220 300C1212 313 1203 325 1195 337C1187 349 1182 363 1171 373C1159 383 1142 391 1126 397C1110 403 1089 405 1073 410C1057 414 1043 420 1027 424C1011 428 995 433 979 432C963 431 945 422 930 417C915 412 905 402 890 402C874 402 859 411 837 417C816 423 784 436 760 438C737 439 710 434 695 425C679 416 673 397 667 383C661 369 660 353 660 338C661 324 662 309 668 296C674 283 689 271 698 260C706 249 719 241 722 231C725 221 716 210 714 197C712 185 704 168 708 156C713 145 728 135 742 128C755 121 776 121 791 114C805 107 815 98 828 87C841 77 853 59 870 50C887 42 910 36 930 37C950 38 971 46 989 54C1006 61 1023 70 1036 80C1050 90 1062 101 1069 114C1077 127 1076 144 1079 156C1082 168 1079 178 1089 185C1100 193 1121 193 1141 199C1162 205 1197 210 1213 221C1230 231 1240 247 1241 260Z"/><path class="contour" pathLength="1" style="--i:8" d="M1285 260C1287 275 1270 292 1261 306C1253 321 1242 334 1233 348C1224 362 1218 377 1205 389C1192 400 1173 410 1154 417C1135 424 1112 426 1093 431C1075 436 1059 443 1041 448C1023 452 1004 458 986 457C967 455 947 445 930 440C913 434 901 423 884 423C866 423 848 433 824 439C799 446 763 461 736 463C709 464 679 459 661 448C643 438 636 417 629 401C623 384 622 366 622 349C622 333 624 317 631 302C638 287 654 272 664 260C675 248 689 239 692 227C695 215 686 203 683 188C681 174 671 155 677 142C682 128 699 117 715 109C731 101 754 101 771 93C787 86 798 75 813 63C829 51 842 30 862 20C881 11 907 4 930 5C953 6 977 16 997 24C1017 32 1036 43 1052 55C1067 66 1081 79 1089 93C1097 107 1097 127 1100 141C1104 154 1100 167 1112 175C1124 183 1148 183 1172 190C1195 197 1235 203 1254 215C1273 227 1284 245 1285 260Z"/><path class="contour" pathLength="1" style="--i:9" d="M1330 260C1331 277 1313 295 1303 312C1293 328 1282 343 1271 359C1260 374 1254 392 1239 405C1225 418 1203 428 1182 436C1161 444 1135 447 1114 453C1093 458 1075 466 1055 471C1035 476 1014 483 993 481C972 480 949 469 930 462C911 456 898 443 878 443C858 443 838 454 811 462C783 469 743 487 712 488C682 490 648 483 628 472C608 460 599 437 592 418C584 400 583 379 583 360C584 342 585 324 593 307C601 290 620 274 631 260C643 246 659 236 662 223C666 209 655 196 653 180C650 164 639 142 645 127C651 112 670 100 688 91C706 82 733 81 751 72C769 64 782 52 799 38C816 25 832 1 853 -9C875 -20 905 -27 930 -27C955 -26 983 -15 1005 -5C1028 4 1049 16 1067 29C1084 42 1100 56 1109 72C1118 88 1117 111 1122 126C1126 141 1121 155 1135 164C1148 173 1175 174 1202 181C1229 189 1273 196 1294 209C1316 222 1328 243 1330 260Z"/></g><g data-depth="36"><path class="contour" pathLength="1" style="--i:10" d="M225 640C226 642 225 646 223 648C221 650 215 651 212 653C209 654 205 655 203 656C200 657 198 658 196 659C194 660 192 661 190 662C189 664 187 665 185 667C183 669 182 672 179 675C177 677 173 680 170 681C167 682 162 681 159 679C156 678 154 675 151 673C149 671 147 669 144 668C142 666 139 666 136 664C134 663 133 661 132 659C131 657 131 654 131 652C131 650 131 648 130 646C130 644 129 642 129 640C129 638 130 636 130 634C130 632 131 631 131 628C130 626 128 622 128 619C127 616 126 612 128 610C130 607 134 606 138 605C142 605 148 607 151 607C155 608 159 610 162 610C165 611 167 611 170 611C173 611 175 612 178 612C180 612 182 613 185 613C188 614 191 613 195 613C198 613 202 614 205 615C207 616 209 618 210 620C212 623 211 625 213 627C214 629 217 631 219 633C221 635 225 638 225 640Z"/><path class="contour" pathLength="1" style="--i:11" d="M281 640C282 645 280 651 276 655C271 659 261 663 254 665C248 668 241 670 235 672C230 674 227 676 223 678C219 680 215 682 211 685C207 687 204 689 201 694C197 698 194 705 189 709C184 714 177 721 170 722C163 724 155 722 148 719C142 716 138 709 133 705C128 702 124 698 119 696C114 693 107 692 103 689C99 686 95 682 93 677C92 673 93 668 92 663C92 659 92 655 91 651C90 648 88 644 88 640C88 636 90 632 90 628C91 624 92 621 91 616C90 611 86 605 85 599C84 593 83 584 86 579C90 574 98 571 106 570C114 570 125 573 133 575C141 577 148 579 154 581C160 582 165 581 170 582C175 583 180 583 185 584C190 585 195 586 200 587C206 587 213 586 219 586C226 587 234 587 239 590C245 592 248 597 250 601C253 605 253 610 256 614C258 618 264 622 268 626C272 630 280 635 281 640Z"/><path class="contour" pathLength="1" style="--i:12" d="M336 640C338 647 335 657 328 663C322 669 306 674 296 678C286 682 276 684 268 688C260 691 255 694 249 698C243 701 237 703 231 707C226 711 221 714 216 720C210 727 206 737 198 744C191 751 180 761 170 763C160 766 147 763 138 758C128 754 122 744 114 738C107 732 101 728 93 724C86 719 76 718 69 713C63 709 58 702 55 696C52 690 54 682 54 675C53 669 52 663 51 657C50 651 47 646 47 640C47 634 49 629 50 623C51 617 53 612 52 604C50 597 44 587 43 578C42 569 39 556 44 549C50 541 62 537 74 535C86 534 103 540 114 542C126 545 136 549 146 551C155 553 162 552 170 553C178 554 185 555 193 556C200 557 207 560 215 560C224 561 234 559 244 560C254 560 266 561 274 564C282 568 287 575 291 581C295 588 294 595 298 601C303 608 311 612 317 619C323 625 334 633 336 640Z"/><path class="contour" pathLength="1" style="--i:13" d="M392 640C394 650 390 662 381 671C372 679 352 685 339 691C325 696 311 699 301 703C290 708 284 712 275 717C267 721 259 724 252 729C245 734 238 739 231 747C224 756 218 769 208 779C198 788 184 801 170 805C156 808 139 804 127 798C114 792 105 779 95 771C86 763 78 757 68 751C58 746 44 744 36 738C27 732 20 723 17 715C13 706 16 695 15 687C14 678 13 671 12 663C10 655 6 648 6 640C6 632 9 625 10 617C11 609 14 602 12 592C11 583 2 570 0 558C-1 545 -4 528 2 518C9 509 26 502 42 501C58 499 80 507 96 510C112 513 125 519 138 521C150 524 159 523 170 524C181 525 190 527 201 528C211 530 219 533 231 534C242 534 255 532 268 533C281 534 298 534 309 539C319 544 325 554 331 562C336 570 335 580 341 588C347 597 357 603 366 612C374 620 389 630 392 640Z"/><path class="contour" pathLength="1" style="--i:14" d="M447 640C450 652 445 668 434 678C423 689 397 697 381 703C364 710 346 714 333 719C320 725 312 730 302 736C292 741 282 745 272 752C263 758 256 764 246 774C237 784 230 802 217 814C205 826 187 842 170 846C153 850 132 845 116 837C100 830 89 813 77 804C65 794 55 786 42 779C30 772 13 770 2 762C-8 754 -17 744 -22 733C-26 723 -23 709 -24 698C-25 688 -26 678 -28 669C-30 659 -35 650 -35 640C-36 630 -31 621 -30 611C-28 601 -25 593 -27 581C-29 568 -40 552 -42 537C-44 521 -48 500 -39 488C-31 476 -10 468 10 466C29 464 58 473 77 477C97 482 114 489 129 492C145 494 157 493 170 495C183 496 196 498 208 500C221 502 232 506 246 507C260 508 277 505 293 506C309 507 330 508 343 514C356 520 364 532 371 542C378 553 377 565 384 576C391 586 404 594 415 605C425 615 444 628 447 640Z"/><path class="contour" pathLength="1" style="--i:15" d="M503 640C507 655 500 673 487 686C473 698 443 708 423 716C403 724 382 729 366 735C350 742 340 749 328 755C316 761 304 766 293 774C282 781 273 788 262 801C251 813 242 834 227 848C212 863 190 882 170 887C150 892 124 885 105 877C87 869 73 848 58 836C43 825 32 815 17 807C2 799 -19 796 -31 786C-44 777 -55 765 -60 752C-65 739 -61 723 -63 710C-64 697 -65 686 -68 674C-70 663 -76 652 -76 640C-77 628 -71 617 -70 605C-68 593 -64 584 -67 569C-69 554 -82 535 -85 516C-87 498 -92 471 -81 457C-71 443 -45 433 -22 431C1 429 35 440 59 445C83 450 103 458 121 462C140 465 154 464 170 466C186 468 201 470 216 473C231 475 244 479 261 480C278 481 298 478 318 479C337 481 362 481 378 489C394 496 403 510 411 523C419 535 418 550 427 563C435 575 451 585 464 598C476 610 499 625 503 640Z"/></g></g></svg>
+      <div class="finish__tape" aria-hidden="true"><span></span><span></span></div>
+      <p class="eyebrow !text-[#d6bd98]/80 relative">KM 42.2 · <b class="!text-[#d6bd98]">Finish line</b></p>
+      <h2 class="finish__title relative">Got an idea?<br><em>Let's run it to launch.</em></h2>
+      <p class="relative mx-auto mt-5 max-w-lg text-lg opacity-80">I'm available for new projects. Tell me what you're building and I'll get back to you with how I'd get your MVP to the finish line.</p>
+      <div class="relative mt-9 flex flex-wrap justify-center gap-3">
+        <a class="btn btn--pop" href="mailto:ronssij@gmail.com?subject=Let%27s%20build%20my%20MVP">ronssij@gmail.com <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/cj-ronxel/" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.11 20.45H3.56V9h3.55v11.45Z"/></svg></span>LinkedIn</a>
+        <a class="btn btn--ghost" href="https://github.com/ronssij" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></span>GitHub</a>
+        <a class="btn btn--ghost" href="https://github.com/sponsors/ronssij" target="_blank" rel="noopener"><span class="h-4 w-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg></span>Sponsor</a>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>&copy; 2026 CJ Ronxel Cabug-os</span>
+      <span>Built in Davao City, Philippines · between long runs</span>
+      <a href="#top" class="hover:text-pop">Back to start ↑</a>
+    </footer>
+  </div>
+</section></main>
 </body>
 </html>
